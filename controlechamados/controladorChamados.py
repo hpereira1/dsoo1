@@ -26,7 +26,7 @@ class ControladorChamados(AbstractControladorChamados):
             for i in self.__chamados:
                 if data == i.data and cliente.codigo == i.cliente.codigo and tecnico.codigo == i.tecnico.codigo and tipo.codigo == i.tipo.codigo:
                     chamado_incluso = 1
-            if not chamado_incluso:
+            if chamado_incluso == 0:
                 novo = Chamado( data,cliente,tecnico,titulo,descricao,prioridade,tipo)
                 self.__chamados.append(novo)
                 return novo
@@ -36,7 +36,7 @@ class ControladorChamados(AbstractControladorChamados):
         for i in self.__tipoChamados:
             if codigo == i.codigo:
                 tipo_incluso = 1
-        if not tipo_incluso:
+        if tipo_incluso == 0:
             novo = TipoChamado(codigo, descricao, nome)
             self.__tipoChamados.append(novo)
             return novo

@@ -21,7 +21,7 @@ class ControladorPessoas(AbstractControladorPessoas):
         for i in self.__clientes:
             if i.codigo == codigo:
                 incluido_cliente = 1
-        if not incluido_cliente:
+        if incluido_cliente == 0:
             cliente_novo = Cliente(nome, codigo)
             self.__clientes.append(cliente_novo)
             return cliente_novo
@@ -31,7 +31,7 @@ class ControladorPessoas(AbstractControladorPessoas):
         for i in self.__tecnicos:
             if i.codigo == codigo:
                 incluido_tecnico = 1
-        if not incluido_tecnico:
+        if incluido_tecnico == 0:
             tecnico_novo = Tecnico(nome, codigo)
             self.__tecnicos.append(tecnico_novo)
             return tecnico_novo
