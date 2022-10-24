@@ -8,7 +8,7 @@ class Aeronave:
         self.__distancia_maxima = distancia_maxima
         self.__numero_min_tripulates = numero_min_tripulates
         self._historico_de__voos = {}
-
+#teste
 
     @property
     def codigo(self):
