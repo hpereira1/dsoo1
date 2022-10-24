@@ -1,4 +1,4 @@
-class Aeronaves:
+class Aeronave:
     def __init__(self, codigo:int, modelo:int, combustivel:int, numero_max_passageiros: int, peso_max_decolagem: int, distancia_maxima: int, numero_min_tripulates: int):
         self.__codigo = codigo
         self.__modelo = modelo
