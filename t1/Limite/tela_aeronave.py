@@ -10,7 +10,7 @@ class TelaAeronave():
     print("4 - Excluir aeronave")
     print("0 - Retornar")
 
-    opcao = int(input("Escolha a opcao: "))
+    opcao = self.le numofae
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
