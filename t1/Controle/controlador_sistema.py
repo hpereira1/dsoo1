@@ -11,7 +11,7 @@ class ControladorSistema:
 
     @property
     def controlador_aeronaves(self):
-        return self.__controlador_aaeronaves
+        return self.__controlador_aeronaves
 
     
 

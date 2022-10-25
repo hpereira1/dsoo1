@@ -3,6 +3,7 @@ from Limite.tela_abstrata import TelaAbstrata
 
 class TelaAeronave(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
+  tela_sistema = TelaAbstrata()
   def tela_opcoes(self):
     print("-------- aeronaveS ----------")
     print("Escolha a opcao")
@@ -12,7 +13,8 @@ class TelaAeronave(TelaAbstrata):
     print("4 - Excluir aeronave")
     print("0 - Retornar")
 
-    opcao = self.TelaAbstrata.le_num_inteiro()
+    
+    opcao = self.tela_sistema.le_num_inteiro()
     
     return opcao
 
@@ -27,19 +29,19 @@ class TelaAeronave(TelaAbstrata):
     distancia_maxima = input("Distancia maxima: ")
     numero_min_tripulantes = input("Numero minimo de tripulantes")
     
-    return {"codigo": codigo, "modelo": modelo, "combustivel": combustivel}
+    return {"codigo": codigo, "modelo": modelo}
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def mostra_aeronave(self, dados_aeronave):
-    print("NOME DO aeronave: ", dados_aeronave["nome"])
-    print("FONE DO aeronave: ", dados_aeronave["telefone"])
-    print("CPF DO aeronave: ", dados_aeronave["cpf"])
+    print("CODIGO DA aeronave: ", dados_aeronave["codigo"])
+    print("MODELO DA aeronave: ", dados_aeronave["modelo"])
+    #print("CPF DO aeronave: ", dados_aeronave["cpf"])
     print("\n")
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_aeronave(self):
-    cpf = input("CPF do aeronave que deseja selecionar: ")
-    return cpf
+    codigo = input("Codigo do aeronave que deseja selecionar: ")
+    return codigo
 
   def mostra_mensagem(self, msg):
     print(msg)
