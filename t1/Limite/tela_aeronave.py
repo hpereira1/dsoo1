@@ -1,5 +1,7 @@
+from Limite.tela_abstrata import TelaAbstrata
 
-class TelaAeronave():
+
+class TelaAeronave(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def tela_opcoes(self):
     print("-------- aeronaveS ----------")
@@ -10,17 +12,22 @@ class TelaAeronave():
     print("4 - Excluir aeronave")
     print("0 - Retornar")
 
-    opcao = self.le numofae
+    opcao = self.TelaAbstrata.le_num_inteiro()
+    
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def pega_dados_aeronave(self):
     print("-------- DADOS aeronave ----------")
-    nome = input("Nome: ")
-    telefone = input("Telefone: ")
-    cpf = input("CPF: ")
-
-    return {"nome": nome, "telefone": telefone, "cpf": cpf}
+    codigo = input("Codigo: ")
+    modelo = input("Modelo: ")
+    combustivel = input("Combustivel: ")
+    numero_max_passafeiros = input("Numero maximo de passageiros: ")
+    peso_max_decolagem = input("Peso maximo de decolagem: ")
+    distancia_maxima = input("Distancia maxima: ")
+    numero_min_tripulantes = input("Numero minimo de tripulantes")
+    
+    return {"codigo": codigo, "modelo": modelo, "combustivel": combustivel}
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def mostra_aeronave(self, dados_aeronave):
