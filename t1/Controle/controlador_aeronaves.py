@@ -21,7 +21,8 @@ class ControladorAeronaves():
     aeronave = self.pega_aeronave_por_codigo(dados_aeronave["codigo"])
     try:
       if aeronave == None:
-        aeronave = aeronave(dados_aeronave["codigo"], dados_aeronave["modelo"])
+        aeronave = aeronave(dados_aeronave["codigo"], dados_aeronave["modelo"], dados_aeronave["combustivel"], dados_aeronave["numero_max_passageiros"],
+                            dados_aeronave["peso_max_decolagem"],dados_aeronave["distancia_max"],dados_aeronave["numero_min_tripulantes"])
         self.__aeronaves.append(aeronave)
       else:
         raise KeyError
