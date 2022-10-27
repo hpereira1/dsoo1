@@ -5,7 +5,7 @@ class TelaAeronave(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   tela_sistema = TelaAbstrata()
   def tela_opcoes(self):
-    print("-------- aeronaveS ----------")
+    print("-------- Aeronaves ----------")
     print("Escolha a opcao")
     print("1 - Incluir aeronave")
     print("2 - Alterar aeronave")
@@ -29,8 +29,10 @@ class TelaAeronave(TelaAbstrata):
     distancia_maxima = input("Distancia maxima (km): ")
     numero_min_tripulantes = input("Numero minimo de tripulantes: ")
     
-    return {"codigo": codigo, "modelo": modelo, "combustivel":combustivel, "numero_max_passageiros": numero_max_passageiros, 
-            "peso_max_decolagem": peso_max_decolagem, "distancia_maxima":distancia_maxima, "numero_min_tripulantes":numero_min_tripulantes}
+    return {"codigo": codigo, "modelo": modelo, 
+            "combustivel":combustivel, "numero_max_passageiros": numero_max_passageiros, 
+            "peso_max_decolagem": peso_max_decolagem, "distancia_maxima":distancia_maxima, "numero_min_tripulantes":numero_min_tripulantes
+            }
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def mostra_aeronave(self, dados_aeronave):

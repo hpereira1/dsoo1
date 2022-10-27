@@ -1,5 +1,7 @@
 class Aeronave:
-    def __init__(self, codigo:int, modelo:int, combustivel:int, numero_max_passageiros: int, peso_max_decolagem: int, distancia_maxima: int, numero_min_tripulates: int):
+    def __init__(self, codigo:int, modelo:int, 
+                 combustivel:int, numero_max_passageiros: int, peso_max_decolagem: int, distancia_maxima: int, numero_min_tripulates: int
+                 ):
         self.__codigo = codigo
         self.__modelo = modelo
         self.__combustivel = combustivel
@@ -8,7 +10,7 @@ class Aeronave:
         self.__distancia_maxima = distancia_maxima
         self.__numero_min_tripulates = numero_min_tripulates
         self._historico_de__voos = {}
-#teste
+
 
     @property
     def codigo(self):
