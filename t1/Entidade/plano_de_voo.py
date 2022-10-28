@@ -2,7 +2,8 @@ from Entidade.aeronave import Aeronave
 
 class PlanoDeVoo():
     
-    def __init__(self, codigo: str, distancia: float, numero_passageiros: int, peso: float, aeronave:Aeronave ):
+    def __init__(self, id_voo: str, codigo: str, distancia: float, numero_passageiros: int, peso: float, aeronave:Aeronave ):
+        self.__id_voo = id_voo
         self.__codigo = codigo
         self.__distancia = distancia
         self.__numero_passageiros = numero_passageiros
@@ -10,7 +11,10 @@ class PlanoDeVoo():
         self.__aeronave = aeronave
         
         
-    
+    ##Adicionar ao diagrama
+    @property
+    def id_voo(self):
+        return self.__id_voo
     @property
     def codigo(self):
         return self.__codigo
@@ -26,6 +30,11 @@ class PlanoDeVoo():
     @property
     def aeronave(self):
         return self.__aeronave
+    
+    ##Adicionar ao diagrama
+    @id_voo.setter
+    def id_voo(self,id_voo):
+        self.__id_voo = id_voo
     
     @codigo.setter
     def codigo(self,codigo):

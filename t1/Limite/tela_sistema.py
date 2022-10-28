@@ -24,10 +24,9 @@ class TelaSistema(TelaAbstrata):
         print("-------- CIA AEREA ---------")
         print("Escolha sua opcao")
         print("1 - Aeronaves")
-        print("2 - Voos")
-        print("3 - Planos De voo")
-        print("4 - Funcionarios")
-        print("5 - Passageiros")        
+        print("2 - Voos")       
+        print("3 - Funcionarios")
+        print("4 - Passageiros")        
         print("0 - Finalizar sistema")
         
         

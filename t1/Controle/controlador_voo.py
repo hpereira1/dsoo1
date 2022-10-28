@@ -1,11 +1,15 @@
    
 from Limite.tela_voo import TelaVoo
 from Entidade.voo import Voo
+import Controle.destino
+
+
 
 
 class ControladorVoos:
 
   def __init__(self, controlador_sistema):
+    self.__destinos = [{'Sao Paulo':700},{'Rio':1200},{'Brasilia':2100}]
     self.__voos = []
     self.__tela_voo = TelaVoo()
     self.__controlador_sistema = controlador_sistema
@@ -26,10 +30,17 @@ class ControladorVoos:
                             dados_voo["id"], dados_voo["data"]
                             )
         self.__voos.append(voo)
+        
+        self.__tela_voo.mostra_mensagem("\nAGORA INCLUA O PLANO DE VOO\n")
+        self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(voo.id)
+        
       else:
         raise KeyError
     except KeyError:
       self.__tela_voo.mostra_mensagem("Voo já existente!")
+      
+      
+
 
   def alterar_voo(self):
     self.lista_voos()
@@ -63,11 +74,27 @@ class ControladorVoos:
 
   def retornar(self):
     self.__controlador_sistema.abre_tela()
+  
+  def lista_planos(self):
+    self.__controlador_sistema.controlador_planos_de_voo.lista_planos_de_voos()
+    
+  ###############################################
+  
+    
+  ######################################################
+    
 
   def abre_tela(self):
-    lista_opcoes = {1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo, 0: self.retornar}
+    lista_opcoes = {1: Controle.destino.menu_destino, 
+                    2: self.incluir_voo, 3: self.alterar_voo, 4: self.lista_voos, 4: self.excluir_voo, 
+                    9: self.lista_planos, 
+                    0: self.retornar}
    
     
     continua = True
     while continua:
       lista_opcoes[self.__tela_voo.tela_opcoes()]()
+  
+  
+    
+    

@@ -29,6 +29,7 @@ class TelaPlanoDeVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def mostra_plano_de_voo(self, dados_plano_de_voo):
+        print("\n\n\n")
         print("CODIGO do Plano de Voo: ", dados_plano_de_voo["codigo"])
         print("DISTANCIA do Voo: ", dados_plano_de_voo["distancia"])
         print("Numero de passageiros do Voo: ", dados_plano_de_voo["numero_passageiros"])

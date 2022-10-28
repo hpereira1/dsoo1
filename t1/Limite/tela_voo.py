@@ -6,14 +6,17 @@ class TelaVoo(TelaAbstrata):
   tela_sistema = TelaAbstrata()
   def tela_opcoes(self):
     print("-------- Voos ----------")
-    print("Escolha a opcao")
-    print("1 - Incluir voo")
-    print("2 - Alterar voo")
-    print("3 - Listar voos")
-    print("4 - Excluir voo")
-    print("5 - Incluir passageiros")
-    print("6 - Excluir passageiros")
-    print("7 - Listar passageiros")
+    print("Escolha a opcao\n")
+   
+    print("1 - Menu Destinos")
+    print("2 - Incluir voo")       
+    print("3 - Alterar voo")
+    print("4 - Listar voos")
+    print("5 - Excluir voo")
+    print("6 - Incluir passageiros")
+    print("7 - Excluir passageiros")
+    print("8 - Listar passageiros")
+    print("9 - Listar planos de voo")
     print("0 - Retornar")
 
     
@@ -23,9 +26,10 @@ class TelaVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def pega_dados_voo(self):
-    print("-------- DADOS voo ----------")
+    print("-------- DADOS VOO ----------")
     id = input("ID: ")
     data = input("Data: ")
+    
      
     return {"id": id, "data": data, 
             
@@ -42,6 +46,18 @@ class TelaVoo(TelaAbstrata):
   def seleciona_voo(self):
     id = input("ID do voo que deseja selecionar: ")
     return id
+  
+  def tela_destino(self):
+      print("-------- DESTINOS ----------\n")
+      print("1 - Incluir Destino")
+      print("2 - Alterar Destino")
+      print("3 - Listar Destinos")
+      print("0 - Retornar")
+      opcao = self.tela_sistema.le_num_inteiro()
+    
+      return opcao
+
+      
 
   def mostra_mensagem(self, msg):
     print(msg)

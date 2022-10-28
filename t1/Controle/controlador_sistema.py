@@ -36,7 +36,7 @@ class ControladorSistema:
         self.__controlador_aeronaves.abre_tela()
     
     def plano_de_voo(self):
-        self.__controlador_planos_de_voo.abre_tela()
+        self.__controlador_planos_de_voo.lista_planos_de_voos()
     
     def voo(self):
         self.__controlador_voo.abre_tela()
