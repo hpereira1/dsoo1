@@ -21,15 +21,16 @@ class TelaSistema(TelaAbstrata):
     #                 print("Valores válidos: ", ints_validos)
     tela_sistema = TelaAbstrata()
     def tela_opcoes(self):
-        print("-------- SisLivros ---------")
+        print("-------- CIA AEREA ---------")
         print("Escolha sua opcao")
         print("1 - Aeronaves")
-        print("2 - Planos De voo")
-        print("3 - Funcionarios")
-        print("4 - Passageiros")        
+        print("2 - Voos")
+        print("3 - Planos De voo")
+        print("4 - Funcionarios")
+        print("5 - Passageiros")        
         print("0 - Finalizar sistema")
         
         
-        opcao = self.tela_sistema.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4])
+        opcao = self.tela_sistema.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5])
         return opcao
 

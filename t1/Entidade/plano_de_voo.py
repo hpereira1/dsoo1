@@ -6,8 +6,9 @@ class PlanoDeVoo():
         self.__codigo = codigo
         self.__distancia = distancia
         self.__numero_passageiros = numero_passageiros
-        self.__peso = peso
+        self.__peso = peso        
         self.__aeronave = aeronave
+        
         
     
     @property
