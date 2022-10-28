@@ -1,10 +1,12 @@
 from Limite.tela_sistema import TelaSistema
 from Controle.controlador_aeronaves import ControladorAeronaves
+from Controle.controlador_planos_de_voo import ControladorPlanosDeVoo
 
 class ControladorSistema:
 
     def __init__(self):
         self.__controlador_aeronaves = ControladorAeronaves(self)
+        self.__controlador_planos_de_voo = ControladorPlanosDeVoo(self)
         self.__tela_sistema = TelaSistema()
         
         
@@ -12,6 +14,10 @@ class ControladorSistema:
     @property
     def controlador_aeronaves(self):
         return self.__controlador_aeronaves
+    
+    @property
+    def controlador_planos_de_voo(self):
+        return self.__controlador_planos_de_voo
 
     
 
@@ -22,13 +28,16 @@ class ControladorSistema:
 
     def cadastra_aeronaves(self):                
         self.__controlador_aeronaves.abre_tela()
+    
+    def planos_de_voo(self):
+        self.__controlador_planos_de_voo.abre_tela()
 
 
     def encerra_sistema(self):
         exit(0)
 
     def abre_tela(self):
-        lista_opcoes = {1: self.cadastra_aeronaves, 0: self.encerra_sistema}
+        lista_opcoes = {1: self.cadastra_aeronaves, 2: self.planos_de_voo, 0: self.encerra_sistema}
         
 
         while True:

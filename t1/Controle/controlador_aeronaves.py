@@ -70,7 +70,7 @@ class ControladorAeronaves():
 
   def abre_tela(self):
     lista_opcoes = {1: self.incluir_aeronave, 2: self.alterar_aeronave, 3: self.lista_aeronaves, 4: self.excluir_aeronave, 0: self.retornar}
-    #lista_opcoes = {1: self.incluir_aeronave, 3: self.lista_aeronaves, 4: self.excluir_aeronave, 0: self.retornar}
+   
     
     continua = True
     while continua:
