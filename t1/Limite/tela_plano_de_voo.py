@@ -31,6 +31,8 @@ class TelaPlanoDeVoo(TelaAbstrata):
                 "peso": peso, 
                 #"aeronave":aeronave
                  }
+    
+    
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def mostra_plano_de_voo(self, dados_plano_de_voo):

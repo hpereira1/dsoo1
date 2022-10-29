@@ -68,9 +68,15 @@ class ControladorPlanosDeVoo():
                 for plano_de_voo in self.__planos_de_voo:
                     self.__tela_plano_de_voo.mostra_plano_de_voo({"id_voo": plano_de_voo.id_voo, "codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
                                                             "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,"aeronave":plano_de_voo.aeronave                                                            
-                                                        })                    
+                                                        })     
+                self.__seleciona_aeronave()               
         except Exception:
             self.__tela_plano_de_voo.mostra_mensagem("\nNENHUM PLANO DE VOO ENCONTRADO!\n")
+            
+    
+    
+    
+   
             
         
 

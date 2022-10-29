@@ -22,7 +22,8 @@ class ControladorVoos:
         return voo
     return None
   
-  #def seleciona_aeronave(self):
+  
+      
     
 
   #testagem com lançamento de exceção para voos já existentes!
@@ -35,22 +36,29 @@ class ControladorVoos:
         voo = Voo(
                             dados_voo["id"], dados_voo["data"]
                             )
-        self.__voos.append(voo)
+        self.__voos.append(voo)        
         self.__tela_voo.mostra_mensagem("\nCRIANDO PLANO DE VOO\n")      
         numero_passageiros = len(self.__passageiros)              
         self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)
-        self.__tela_voo.mostra_mensagem("\nESCOLHA UM AVIAO\n")
-        self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
-        ##listar somente as que dão match   
         
-                  
+        self.__controlador_sistema.controlador_voo.seleciona_aeronave()
+        
        
-        
         
       else:
         raise KeyError
     except KeyError:
       self.__tela_voo.mostra_mensagem("Voo já existente!")
+    
+    
+  def seleciona_aeronave(self):
+     
+      self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n")
+      self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+        
+      for self.__controlador_sistema.controlador_aeronaves.aeronave in self.__controlador_sistema.controlador_aeronaves.aeronaves:
+          if self.__distancia > self.__controlador_sistema.controlador_aeronaves.aeronave.distancia:
+              print("Aeronave nao percorre distancia requerida!")  
       
       
 
@@ -108,7 +116,7 @@ class ControladorVoos:
   def abre_tela(self):
     lista_opcoes = {
                   
-                    2: self.incluir_voo, 3: self.alterar_voo, 4: self.lista_voos, 4: self.excluir_voo, 
+                    1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo, 
                     9: self.lista_planos,
                     
                     0: self.retornar}
