@@ -1,7 +1,7 @@
    
 from Limite.tela_voo import TelaVoo
 from Entidade.voo import Voo
-import Controle.destino
+
 
 
 
@@ -9,8 +9,7 @@ import Controle.destino
 class ControladorVoos:
 
   def __init__(self, controlador_sistema):
-    #self.__destinos = ['Sao Paulo','Rio','Brasilia']
-    self.__destinos = [{'Sao Paulo':700},{'Rio':1200},{'Brasilia':2100}]
+ 
     self.__voos = []
     self.__tela_voo = TelaVoo()
     self.__controlador_sistema = controlador_sistema
@@ -93,10 +92,11 @@ class ControladorVoos:
     
 
   def abre_tela(self):
-    lista_opcoes = {1: Controle.destino.menu_destino, 
+    lista_opcoes = {
+                  
                     2: self.incluir_voo, 3: self.alterar_voo, 4: self.lista_voos, 4: self.excluir_voo, 
                     9: self.lista_planos,
-                    7:self.lista_destinos, 
+                    7: self.lista_destinos, 
                     0: self.retornar}
    
     
