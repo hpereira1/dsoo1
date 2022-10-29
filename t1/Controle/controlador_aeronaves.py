@@ -40,6 +40,7 @@ class ControladorAeronaves():
       novos_dados_aeronave = self.__tela_aeronave.pega_dados_aeronave()
       aeronave.codigo = novos_dados_aeronave["codigo"]
       aeronave.modelo = novos_dados_aeronave["modelo"]
+      aeronave.combustivel = novos_dados_aeronave["combustivel"]
       aeronave.numero_max_passafeiros = novos_dados_aeronave["numero_max_passageiros"]
       aeronave.peso_max_decolagem = novos_dados_aeronave["peso_max_decolagem"]
       aeronave.distancia_maxima = novos_dados_aeronave["distancia_maxima"]
@@ -52,7 +53,7 @@ class ControladorAeronaves():
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
   def lista_aeronaves(self):
     try:
-      if not self.__lista_aeronaves:
+      if not self.__aeronaves:
         raise Exception
       else:        
         for aeronave in self.__aeronaves:
