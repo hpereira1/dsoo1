@@ -2,7 +2,7 @@ from abc import ABC,abstractmethod
 
 class Pessoa(ABC):
     @abstractmethod
-    def __init__(self, nome: str, id: int, email: str):
+    def __init__(self, nome: str, id: str, email: str):
         self.__nome = nome
         self.__id = id
         self.__email = email
@@ -26,7 +26,7 @@ class Pessoa(ABC):
         
     @id.setter
     def id(self, id):
-        if isinstance(id, int):
+        if isinstance(id, str):
             self.__id = id
     
     @email.setter

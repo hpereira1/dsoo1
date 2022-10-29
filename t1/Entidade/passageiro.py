@@ -1,11 +1,11 @@
 from abc import ABC, abstractmethod
-from pessoa import Pessoa
+from Entidade.pessoa import Pessoa
 
 
 class Passageiro(Pessoa):
-    def __init__(self, nome: str, id: int, email: str, historico_de_voos: dict):
+    def __init__(self, nome: str, id: str, email: str):
         super().__init__(nome, id, email)
-        self.__historico_de_voos = historico_de_voos
+        self.__historico_de_voos = {}
         
     @property
     def historico_de_voos(self):
