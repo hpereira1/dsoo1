@@ -41,8 +41,10 @@ class ControladorVoos:
         numero_passageiros = len(self.__passageiros)              
         self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)
         
-        self.__controlador_sistema.controlador_voo.seleciona_aeronave()
-        
+        #self.__controlador_sistema.controlador_voo.seleciona_aeronave()
+        self.__tela_voo.mostra_mensagem("\nAERONAVES\n")  
+        self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+        self.__voo.aeronave = self.__voo.aeronave = self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n")
        
         
       else:
@@ -53,12 +55,16 @@ class ControladorVoos:
     
   def seleciona_aeronave(self):
      
-      self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n")
+      self.__tela_voo.mostra_mensagem("\nAERONAVES\n")  
       self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+      self.__voo.aeronave = self.__voo.aeronave = self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n")
+     
+      
+      
         
-      for self.__controlador_sistema.controlador_aeronaves.aeronave in self.__controlador_sistema.controlador_aeronaves.aeronaves:
-          if self.__distancia > self.__controlador_sistema.controlador_aeronaves.aeronave.distancia:
-              print("Aeronave nao percorre distancia requerida!")  
+      #for self.__controlador_sistema.controlador_aeronaves.aeronave in self.__controlador_sistema.controlador_aeronaves.aeronaves:
+          #if self.__distancia > self.__controlador_sistema.controlador_aeronaves.aeronave.distancia:
+              #print("Aeronave nao percorre distancia requerida!")  
       
       
 

@@ -28,7 +28,7 @@ class TelaVoo(TelaAbstrata):
     print(arg)
     entrada = input(">")
     
-    self.__entrada
+    return entrada
   
   
   
