@@ -1,4 +1,4 @@
-from tela_abstrata import TelaAbstrata
+from Limite.tela_abstrata import TelaAbstrata
 
 class TelaPassageiro(TelaAbstrata):
   def __init__(self):
@@ -23,6 +23,8 @@ class TelaPassageiro(TelaAbstrata):
     try:
       nome = input("Nome: ")
       id = input("ID: ")
+      if type(id) != int:
+        raise TypeError
       email = input("Email: ")
       return {"nome": nome, "id": id, "email": email}
     except TypeError:

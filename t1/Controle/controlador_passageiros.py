@@ -17,9 +17,9 @@ class ControladorPassageiros:
     def abre_tela_inicial(self):
         pass
     
-    def pega_passageiro_por_id(self, id: int):
+    def pega_passageiro_por_id(self, id: str):
         for passageiro in self.__passageiros:
-            if(passageiro.__id == id):
+            if(passageiro.id == id):
                 return passageiro
         return None
 
@@ -30,7 +30,7 @@ class ControladorPassageiros:
         try:
             if passageiro == None:
                 passageiro = Passageiro(dados_passageiro["nome"], dados_passageiro["id"],dados_passageiro["email"])
-                self.__passageiros_.append(passageiro)
+                self.__passageiros.append(passageiro)
             else:
                 raise KeyError
         except KeyError:
@@ -63,9 +63,15 @@ class ControladorPassageiros:
             self.__tela_passageiro.mostra_mensagem("Passageiro não existe")
     
     def lista_passageiros(self):
-        for passageiro in self.__passageiros:
-            self.__tela_passageiro.mostra_mensagem({"nome": passageiro.__nome, "id": passageiro.__id})
-    
+        try:
+            if not self.__aeronaves:
+                raise Exception
+            else:        
+                for passageiro in self.__passageiros:
+                    self.__tela_passageiro.mostra_mensagem({"nome": passageiro.__nome, "id": passageiro.__id})
+        except Exception:
+            self.__tela_aeronave.mostra_mensagem("\nNENHUM PASSAGEIRO ENCONTRADO!\n")             
+            
     def ver_historico_por_id(self):
         id_passageiro = self.__tela_passageiro.seleciona_passageiro()
         passageiro = self.pega_passageiro_por_id(id_passageiro)
@@ -79,9 +85,9 @@ class ControladorPassageiros:
             self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
     def abre_tela(self):
-        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,5: self.pega_passageiro_por_id,6: self.ver_historico_por_id, 0: self.retornar}
+        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,5: self.pega_passageiro_por_id,6: self.ver_historico_por_id, 0: self.finalizar}
    
     
         continua = True
         while continua:
-            lista_opcoes[self.__tela_aeronave.tela_opcoes()]()
+            lista_opcoes[self.__tela_passageiro.tela_opcoes()]()
