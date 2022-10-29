@@ -9,6 +9,7 @@ import Controle.destino
 class ControladorVoos:
 
   def __init__(self, controlador_sistema):
+    #self.__destinos = ['Sao Paulo','Rio','Brasilia']
     self.__destinos = [{'Sao Paulo':700},{'Rio':1200},{'Brasilia':2100}]
     self.__voos = []
     self.__tela_voo = TelaVoo()
@@ -26,13 +27,15 @@ class ControladorVoos:
     voo = self.pega_voo_por_id(dados_voo["id"])
     try:
       if voo == None:
+        
         voo = Voo(
                             dados_voo["id"], dados_voo["data"]
                             )
         self.__voos.append(voo)
-        
-        self.__tela_voo.mostra_mensagem("\nAGORA INCLUA O PLANO DE VOO\n")
-        self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(voo.id)
+        self.__tela_voo.mostra_mensagem("\nESCOLHA O DESTINO\n")
+        self.__controlador_sistema.controlador_voo.lista_destinos()
+       
+        #self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(voo.id)
         
       else:
         raise KeyError
@@ -60,6 +63,11 @@ class ControladorVoos:
   def lista_voos(self):
     for voo in self.__voos:
       self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data})
+  
+  # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
+  def lista_destinos(self):
+    for destino in self.__destinos:
+      self.__tela_voo.mostra_mensagem(destino)
 
   def excluir_voo(self):
     self.lista_voos()
@@ -87,7 +95,8 @@ class ControladorVoos:
   def abre_tela(self):
     lista_opcoes = {1: Controle.destino.menu_destino, 
                     2: self.incluir_voo, 3: self.alterar_voo, 4: self.lista_voos, 4: self.excluir_voo, 
-                    9: self.lista_planos, 
+                    9: self.lista_planos,
+                    7:self.lista_destinos, 
                     0: self.retornar}
    
     

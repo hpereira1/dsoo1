@@ -26,7 +26,8 @@ class TelaVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def pega_dados_voo(self):
-    print("-------- DADOS VOO ----------")
+    print("-------- DADOS VOO ----------\n")
+    
     id = input("ID: ")
     data = input("Data: ")
     

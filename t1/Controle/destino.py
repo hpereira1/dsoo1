@@ -1,11 +1,11 @@
-import Controle.controlador_voo
+import Controle.controlador_voo 
+#from Controle.controlador_voo import ControladorVoos
 
-def menu_destino():
+def menu_destino():   
     return Controle.controlador_voo.TelaVoo().tela_destino()
 
-def lista_destinos(self):
-    for destino in self.__Controle.controlador_voo.destinos:
-      self.__tela_voo.mostra_voo(destino)      
+      
+          
        
         
 def retornar2(self):
@@ -14,7 +14,7 @@ def retornar2(self):
 
 
 def abre_tela2(self):
-    lista_opcoes = { 0: self.retornar, 3: self.lista_destinhos}
+    lista_opcoes = { 0: self.retornar, 3: self.lista_destinos1}
     
     continua = True
     while continua:
