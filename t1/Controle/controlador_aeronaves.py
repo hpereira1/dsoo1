@@ -54,10 +54,12 @@ class ControladorAeronaves():
     try:
       if not self.__lista_aeronaves:
         raise Exception
+      else:        
+        for aeronave in self.__aeronaves:
+          self.__tela_aeronave.mostra_aeronave({"codigo": aeronave.codigo, "modelo": aeronave.modelo})         
     except Exception:
-      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!\n")
-      for aeronave in self.__aeronaves:        
-        self.__tela_aeronave.mostra_aeronave({"codigo": aeronave.codigo, "modelo": aeronave.modelo})
+        self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!\n")             
+        
 
   def excluir_aeronave(self):
     self.lista_aeronaves()
