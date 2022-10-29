@@ -29,7 +29,7 @@ class ControladorPassageiros:
         passageiro = self.pega_passageiro_por_id(dados_passageiro["id"])
         try:
             if passageiro == None:
-                passageiro = Passageiro(dados_passageiro["nome"], dados_passageiro["id"],dados_passageiro["email"],dados_passageiro["historico_de_voos"])
+                passageiro = Passageiro(dados_passageiro["nome"], dados_passageiro["id"],dados_passageiro["email"])
                 self.__passageiros_.append(passageiro)
             else:
                 raise KeyError
@@ -38,7 +38,6 @@ class ControladorPassageiros:
 
     
     def remove_passageiro(self):
-        lista = self.lista_passageiros()
         id_passageiro = self.__tela_passageiro.seleciona_passageiro()
         passageiro = self.pega_passageiro_por_id(id_passageiro)
         try:
