@@ -64,13 +64,13 @@ class ControladorPassageiros:
     
     def lista_passageiros(self):
         try:
-            if not self.__aeronaves:
+            if not self.__passageiros:
                 raise Exception
             else:        
                 for passageiro in self.__passageiros:
-                    self.__tela_passageiro.mostra_mensagem({"nome": passageiro.__nome, "id": passageiro.__id})
+                    self.__tela_passageiro.mostra_mensagem({"nome": passageiro.nome, "id": passageiro.id})
         except Exception:
-            self.__tela_aeronave.mostra_mensagem("\nNENHUM PASSAGEIRO ENCONTRADO!\n")             
+            self.__tela_passageiro.mostra_mensagem("\nNENHUM PASSAGEIRO ENCONTRADO!\n")             
             
     def ver_historico_por_id(self):
         id_passageiro = self.__tela_passageiro.seleciona_passageiro()

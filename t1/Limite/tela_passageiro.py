@@ -23,8 +23,6 @@ class TelaPassageiro(TelaAbstrata):
     try:
       nome = input("Nome: ")
       id = input("ID: ")
-      if type(id) != int:
-        raise TypeError
       email = input("Email: ")
       return {"nome": nome, "id": id, "email": email}
     except TypeError:
