@@ -1,8 +1,8 @@
 from tela_abstrata import TelaAbstrata
 
 class TelaPassageiro(TelaAbstrata):
-    def __init__(self):
-        super().__init__()
+  def __init__(self):
+    super().__init__()
     
     
   def tela_opcoes(self):
@@ -14,28 +14,30 @@ class TelaPassageiro(TelaAbstrata):
     print("4 - Excluir passageiro")
     print("0 - Retornar")
 
-    opcao = self.le numofae
+    opcao = self.le_num_inteiro()
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
-  def pega_dados_aeronave(self):
+  def pega_dados_passageiro(self):
     print("-------- DADOS passageiro ----------")
-    nome = input("Nome: ")
-    telefone = input("Telefone: ")
-    cpf = input("CPF: ")
-
-    return {"nome": nome, "telefone": telefone, "cpf": cpf}
+    try:
+      nome = input("Nome: ")
+      id = input("ID: ")
+      email = input("Email: ")
+      return {"nome": nome, "id": id, "email": email}
+    except TypeError:
+      self.mostra_mensagem("typeError")
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
-  def mostra_ṕassageiro(self, dados_aeronave):
-    print("NOME DO passageiro: ", dados_aeronave["nome"])
-    print("FONE DO passageiro: ", dados_aeronave["telefone"])
-    print("CPF DO passageiro: ", dados_aeronave["cpf"])
+  def mostra_passageiro(self, dados_passageiro):
+    print("NOME DO passageiro: ", dados_passageiro["nome"])
+    print("ID DO passageiro: ", dados_passageiro["id"])
+    print("EMAIL DO passageiro: ", dados_passageiro["email"])
     print("\n")
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_passageiro(self):
-    cpf = input("CPF do passageiro que deseja selecionar: ")
+    id_passageiro = input("ID do passageiro que deseja selecionar: ")
     return cpf
 
   def mostra_mensagem(self, msg):

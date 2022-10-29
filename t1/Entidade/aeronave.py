@@ -9,7 +9,7 @@ class Aeronave:
         self.__peso_max_decolagem = peso_max_decolagem
         self.__distancia_maxima = distancia_maxima
         self.__numero_min_tripulates = numero_min_tripulates
-        self._historico_de__voos = {}
+        self.__historico_de__voos = {}
 
 
     @property
