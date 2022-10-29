@@ -23,6 +23,10 @@ class TelaVoo(TelaAbstrata):
     opcao = self.tela_sistema.le_num_inteiro()
     
     return opcao
+  
+  
+  
+    
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def pega_dados_voo(self):
@@ -40,8 +44,12 @@ class TelaVoo(TelaAbstrata):
   def mostra_voo(self, dados_voo):
     print("ID DO VOO: ", dados_voo["id"])
     print("DATA DO VOO: ", dados_voo["data"])
+    print("PLANO DE VOO: ", dados_voo["plano_de_voo"])
     
     print("\n")
+
+
+
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_voo(self):

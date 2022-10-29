@@ -9,16 +9,21 @@ from Entidade.voo import Voo
 class ControladorVoos:
 
   def __init__(self, controlador_sistema):
- 
+    self.__passageiros = ["Eduardo", "Joao", "Bolsonaro","Lula","Henrique"]
     self.__voos = []
     self.__tela_voo = TelaVoo()
     self.__controlador_sistema = controlador_sistema
+    
+  
 
   def pega_voo_por_id(self, id: str):
     for voo in self.__voos:
       if(voo.id == id):
         return voo
     return None
+  
+  #def seleciona_aeronave(self):
+    
 
   #testagem com lançamento de exceção para voos já existentes!
   def incluir_voo(self):
@@ -31,10 +36,16 @@ class ControladorVoos:
                             dados_voo["id"], dados_voo["data"]
                             )
         self.__voos.append(voo)
-        self.__tela_voo.mostra_mensagem("\nESCOLHA O DESTINO\n")
-        self.__controlador_sistema.controlador_voo.lista_destinos()
+        self.__tela_voo.mostra_mensagem("\nCRIANDO PLANO DE VOO\n")      
+        numero_passageiros = len(self.__passageiros)              
+        self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)
+        self.__tela_voo.mostra_mensagem("\nESCOLHA UM AVIAO\n")
+        self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+        ##listar somente as que dão match   
+        
+                  
        
-        #self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(voo.id)
+        
         
       else:
         raise KeyError
@@ -60,14 +71,17 @@ class ControladorVoos:
 
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
   def lista_voos(self):
-    for voo in self.__voos:
-      self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data})
+    try:
+      if not self.__voos:
+        raise Exception
+      else:
+        for voo in self.__voos:
+          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo})
+    except Exception:
+      self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
+    
+    
   
-  # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
-  def lista_destinos(self):
-    for destino in self.__destinos:
-      self.__tela_voo.mostra_mensagem(destino)
-
   def excluir_voo(self):
     self.lista_voos()
     id_voo = self.__tela_voo.seleciona_voo()
@@ -96,7 +110,7 @@ class ControladorVoos:
                   
                     2: self.incluir_voo, 3: self.alterar_voo, 4: self.lista_voos, 4: self.excluir_voo, 
                     9: self.lista_planos,
-                    7: self.lista_destinos, 
+                    
                     0: self.retornar}
    
     
