@@ -12,7 +12,7 @@ class ControladorPassageiros:
         pass
     
     def finalizar(self):
-        pass
+        self.__controlador_sistema.abre_tela()
     
     def abre_tela_inicial(self):
         pass
@@ -59,7 +59,7 @@ class ControladorPassageiros:
                 passageiro.__email = novos_dados_passageiro["email"]
             else:
                 raise Exception
-        except:
+        except Exception:
             self.__tela_passageiro.mostra_mensagem("Passageiro não existe")
     
     def lista_passageiros(self):
@@ -72,6 +72,16 @@ class ControladorPassageiros:
         try:
             if(passageiro is not None):
                 for voo in passageiro.__historico_de_voos:
-                    self.__tela_passageiro.mostra_mensagem({})
-            
+                    self.__tela_passageiro.mostra_mensagem({"id": voo.__id, "data": voo.__data})
+            else:
+                raise Exception
+        except Exception:
+            self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
+    def abre_tela(self):
+        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,5: self.pega_passageiro_por_id,6: self.ver_historico_por_id, 0: self.retornar}
+   
+    
+        continua = True
+        while continua:
+            lista_opcoes[self.__tela_aeronave.tela_opcoes()]()
