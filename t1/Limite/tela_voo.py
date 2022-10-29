@@ -8,13 +8,13 @@ class TelaVoo(TelaAbstrata):
     print("-------- Voos ----------")
     print("Escolha a opcao\n")
    
-    print("1 - Menu Destinos")
+    
     print("2 - Incluir voo")       
     print("3 - Alterar voo")
     print("4 - Listar voos")
     print("5 - Excluir voo")
     print("6 - Incluir passageiros")
-    print("7 - Excluir passageiros")
+    print("7 - Listar planos de voo")
     print("8 - Listar passageiros")
     print("9 - Listar planos de voo")
     print("0 - Retornar")
