@@ -47,18 +47,7 @@ class TelaVoo(TelaAbstrata):
   def seleciona_voo(self):
     id = input("ID do voo que deseja selecionar: ")
     return id
-  
-  def tela_destino(self):
-      print("-------- DESTINOS ----------\n")
-      print("1 - Incluir Destino")
-      print("2 - Alterar Destino")
-      print("3 - Listar Destinos")
-      print("0 - Retornar")
-      opcao = self.tela_sistema.le_num_inteiro()
-    
-      return opcao
 
-      
 
   def mostra_mensagem(self, msg):
     print(msg)
