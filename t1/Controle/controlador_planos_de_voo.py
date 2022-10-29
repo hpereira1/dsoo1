@@ -17,20 +17,24 @@ class ControladorPlanosDeVoo():
                 return plano_de_voo
         return None
     
-    def incluir_plano_de_voo(self, id_voo:str):
+    def incluir_plano_de_voo(self, id_voo:str,numero_passageiros:int):
         dados_plano_de_voo = self.__tela_plano_de_voo.pega_dados_plano_de_voo()
         plano_de_voo = self.pega_plano_de_voo_por_codigo(dados_plano_de_voo["codigo"])
         try:
             if plano_de_voo == None:
+                          
+                
                 plano_de_voo = PlanoDeVoo(
-                    dados_plano_de_voo["id_voo"],
-                    dados_plano_de_voo["codigo"], dados_plano_de_voo["distancia"],dados_plano_de_voo["numero_passageiros"],dados_plano_de_voo["peso"],
-                    dados_plano_de_voo["aeronave"]  
+                    id_voo,
+                    dados_plano_de_voo["codigo"], dados_plano_de_voo["distancia"],
+                    numero_passageiros
+                    ,dados_plano_de_voo["peso"],
+                    #dados_plano_de_voo["aeronave"]  
                 )
                 self.__planos_de_voo.append(plano_de_voo)
-                voo1 = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)
-                print(voo1.id)
-                #self.__controlador_sistema.controlador_voo.voo.plano_de_voo = plano_de_voo 
+                voo = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)
+                voo.plano_de_voo = plano_de_voo
+                 
                
             else:
                 raise KeyError
@@ -44,6 +48,7 @@ class ControladorPlanosDeVoo():
     
         if(plano_de_voo is not None):
             novos_dados_plano_de_voo = self.__tela_plano_de_voo.pega_dados_plano_de_voo()
+           # plano_de_voo.id_voo = novos_dados_plano_de_voo["id_voo"]
             plano_de_voo.codigo = novos_dados_plano_de_voo["codigo"]
             plano_de_voo.distancia = novos_dados_plano_de_voo["distancia"]
             plano_de_voo.numero_passageiros = novos_dados_plano_de_voo["numero_passageiros"]
@@ -58,14 +63,16 @@ class ControladorPlanosDeVoo():
     def lista_planos_de_voos(self):        
         try:
             if not self.__planos_de_voo:
-                raise Exception                
+                raise Exception
+            else:
+                for plano_de_voo in self.__planos_de_voo:
+                    self.__tela_plano_de_voo.mostra_plano_de_voo({"id_voo": plano_de_voo.id_voo, "codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
+                                                            "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,"aeronave":plano_de_voo.aeronave                                                            
+                                                        })                    
         except Exception:
             self.__tela_plano_de_voo.mostra_mensagem("\nNENHUM PLANO DE VOO ENCONTRADO!\n")
             
-        for plano_de_voo in self.__planos_de_voo:
-                self.__tela_plano_de_voo.mostra_plano_de_voo({"codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
-                                                            "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,"aeronave":plano_de_voo.aeronave                                                            
-                                                        })    
+        
 
     def excluir_plano_de_voo(self):
         self.lista_planos_de_voos()

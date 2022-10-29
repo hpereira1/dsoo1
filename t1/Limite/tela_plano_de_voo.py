@@ -19,18 +19,24 @@ class TelaPlanoDeVoo(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def pega_dados_plano_de_voo(self):
         print("-------- DADOS PLANOS DE VOO ----------")
-        codigo = input("ID: ")
+        #id_voo = input("ID_VOO: ")
+        codigo = input("CODIGO: ")
         distancia = input("Distancia: ")
-        numero_passageiros = input("Numero de passageiros: ")
-        peso = input("Peso: ")
-        aeronave = input("Aeronave: ")
+        #numero_passageiros = input("Numero de passageiros: ")
+        peso = input("Peso: ")        
+        #aeronave = input("Aeronave: ")
 
-        return {"codigo": codigo, "distancia": distancia, "numero_passageiros": numero_passageiros, "peso": peso, "aeronave":aeronave}
+        return {"codigo": codigo, "distancia": distancia, 
+                #"numero_passageiros": numero_passageiros, 
+                "peso": peso, 
+                #"aeronave":aeronave
+                 }
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def mostra_plano_de_voo(self, dados_plano_de_voo):
         print("\n\n\n")
-        print("CODIGO do Plano de Voo: ", dados_plano_de_voo["codigo"])
+        print("ID do Voo: ", dados_plano_de_voo["id_voo"])
+        print("Codigo do Plano de Voo: ", dados_plano_de_voo["codigo"])
         print("DISTANCIA do Voo: ", dados_plano_de_voo["distancia"])
         print("Numero de passageiros do Voo: ", dados_plano_de_voo["numero_passageiros"])
         print("Peso do Voo: ", dados_plano_de_voo["peso"])
