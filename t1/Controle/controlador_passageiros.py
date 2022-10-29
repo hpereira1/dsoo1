@@ -49,11 +49,29 @@ class ControladorPassageiros:
             self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
     def altera_passageiro(self):
-        pass
+        id_passageiro = self.__tela_passageiro.seleciona_passageiro()
+        passageiro = self.pega_passageiro_por_id(id_passageiro)
+        try:
+            if passageiro is not None:
+                novos_dados_passageiro = self.__tela_passageiro.pega_dados_passageiro()
+                passageiro.__nome = novos_dados_passageiro["nome"]
+                passageiro.__id = novos_dados_passageiro["id"]
+                passageiro.__email = novos_dados_passageiro["email"]
+            else:
+                raise Exception
+        except:
+            self.__tela_passageiro.mostra_mensagem("Passageiro não existe")
     
     def lista_passageiros(self):
-        pass
+        for passageiro in self.__passageiros:
+            self.__tela_passageiro.mostra_mensagem({"nome": passageiro.__nome, "id": passageiro.__id})
     
     def ver_historico_por_id(self):
-        pass
+        id_passageiro = self.__tela_passageiro.seleciona_passageiro()
+        passageiro = self.pega_passageiro_por_id(id_passageiro)
+        try:
+            if(passageiro is not None):
+                for voo in passageiro.__historico_de_voos:
+                    self.__tela_passageiro.mostra_mensagem({})
+            
     
