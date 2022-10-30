@@ -97,6 +97,9 @@ class ControladorVoos:
   
   def excluir_passageiro(self):
     self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+    passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.__tela_voo.entrada("Digite o id de um passageiro"))
+    self.__passageiros.remove(passageiro.id)
+    
   
   def listar_passageiro(self):
     try:
