@@ -1,5 +1,5 @@
 class Cargo:
-    def __init__(self, descricao: str, id: int, salario: float):
+    def __init__(self, descricao: str, id: str, salario: float):
         self.__descricao = descricao
         self.__id = id
         self.__salario = salario
