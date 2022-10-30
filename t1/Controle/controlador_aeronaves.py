@@ -26,6 +26,7 @@ class ControladorAeronaves():
                             dados_aeronave["peso_max_decolagem"],dados_aeronave["distancia_maxima"],dados_aeronave["numero_min_tripulantes"]
                             )
         self.__aeronaves.append(aeronave)
+        self.lista_aeronaves()
       else:
         raise KeyError
     except KeyError:
@@ -53,11 +54,11 @@ class ControladorAeronaves():
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
   def lista_aeronaves(self):
     try:
-      if not self.aeronaves:
+      if not self.__aeronaves:
         raise Exception
       else:        
-        for aeronave in self.aeronaves:
-          self.__tela_aeronave.mostra_aeronave({"codigo": aeronave.codigo, "modelo": aeronave.modelo})         
+        for aeronave in self.__aeronaves:
+          self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo": aeronave.modelo})         
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")             
         
