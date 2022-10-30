@@ -32,7 +32,10 @@ class TelaPlanoDeVoo(TelaAbstrata):
                 #"aeronave":aeronave
                  }
     
-    
+    def entrada(self,arg):
+      print(arg)
+      entrada = input(">")
+      return entrada
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def mostra_plano_de_voo(self, dados_plano_de_voo):

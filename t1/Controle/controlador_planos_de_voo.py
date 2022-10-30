@@ -34,6 +34,11 @@ class ControladorPlanosDeVoo():
                 self.__planos_de_voo.append(plano_de_voo)
                 voo = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)
                 voo.plano_de_voo = plano_de_voo
+                self.__tela_plano_de_voo.mostra_mensagem("\nAERONAVES\n")  
+                self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+                #self.__controlador_sistema.controlador_planos_de_voo.seleciona_aeronave()
+                plano_de_voo.aeronave = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
+                
                  
                
             else:
@@ -69,16 +74,11 @@ class ControladorPlanosDeVoo():
                     self.__tela_plano_de_voo.mostra_plano_de_voo({"id_voo": plano_de_voo.id_voo, "codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
                                                             "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,"aeronave":plano_de_voo.aeronave                                                            
                                                         })     
-                self.__seleciona_aeronave()               
+                #self.__seleciona_aeronave()               
         except Exception:
             self.__tela_plano_de_voo.mostra_mensagem("\nNENHUM PLANO DE VOO ENCONTRADO!\n")
             
-    
-    
-    
-   
-            
-        
+
 
     def excluir_plano_de_voo(self):
         self.lista_planos_de_voos()

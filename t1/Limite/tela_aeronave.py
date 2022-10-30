@@ -36,9 +36,14 @@ class TelaAeronave(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def mostra_aeronave(self, dados_aeronave):
-    print("CODIGO DA aeronave: ", dados_aeronave["codigo"])
-    print("MODELO DA aeronave: ", dados_aeronave["modelo"])
-    #print("CPF DO aeronave: ", dados_aeronave["cpf"])
+    print("Codigo da aeronave: ", dados_aeronave["codigo"])
+    print("Modelo da aeronave: ", dados_aeronave["modelo"])
+    print("Combustivel da aeronave: ", dados_aeronave["combustivel"])
+    print("Numero maximo de passageiros: ", dados_aeronave["numero_max_passageiros"])
+    print("Peso maximo de decolagem: ", dados_aeronave["peso_max_decolagem"])
+    print("Distancia maxima: ", dados_aeronave["distancia_maxima"])
+    print("Numero minimo de tripulantes: ", dados_aeronave["numero_min_tripulantes"])
+   
     print("\n")
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado

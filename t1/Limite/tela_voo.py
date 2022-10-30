@@ -12,10 +12,10 @@ class TelaVoo(TelaAbstrata):
     print("1 - Incluir voo")       
     print("2 - Alterar voo")
     print("3 - Listar voos")
-    print(" - Excluir voo")
-    print(" - Incluir passageiros")
-    print(" - Listar planos de voo")
-    print(" - Listar passageiros")
+    print("4 - Excluir voo")
+    print("5 - Incluir passageiros do voo")
+    print("6 - Excluir passageiros do voo")
+    print("7 - Listar passageiros do voo")
     print("9 - Listar planos de voo")
     print("0 - Retornar")
 
@@ -51,6 +51,7 @@ class TelaVoo(TelaAbstrata):
     print("ID DO VOO: ", dados_voo["id"])
     print("DATA DO VOO: ", dados_voo["data"])
     print("PLANO DE VOO: ", dados_voo["plano_de_voo"])
+    print("AERONAVE: ", dados_voo["aeronave"])
     
     print("\n")
 

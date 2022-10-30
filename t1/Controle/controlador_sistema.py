@@ -28,7 +28,7 @@ class ControladorSistema:
     
     @property
     def controlador_passageiros(self):
-        return self.__controlador_passageiro
+        return self.__controlador_passageiros
 
     
 

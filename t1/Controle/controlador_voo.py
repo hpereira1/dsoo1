@@ -41,10 +41,12 @@ class ControladorVoos:
         numero_passageiros = len(self.__passageiros)              
         self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)
         
-        #self.__controlador_sistema.controlador_voo.seleciona_aeronave()
-        self.__tela_voo.mostra_mensagem("\nAERONAVES\n")  
-        self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
-        self.__voo.aeronave = self.__voo.aeronave = self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n")
+        
+        #self.__tela_voo.mostra_mensagem("\nAERONAVES\n")  
+        #self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+        #self.__controlador_sistema.controlador_planos_de_voo.seleciona_aeronave()
+        #voo.aeronave = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
+        
        
         
       else:
@@ -53,19 +55,7 @@ class ControladorVoos:
       self.__tela_voo.mostra_mensagem("Voo já existente!")
     
     
-  def seleciona_aeronave(self):
-     
-      self.__tela_voo.mostra_mensagem("\nAERONAVES\n")  
-      self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
-      self.__voo.aeronave = self.__voo.aeronave = self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n")
-     
-      
-      
-        
-      #for self.__controlador_sistema.controlador_aeronaves.aeronave in self.__controlador_sistema.controlador_aeronaves.aeronaves:
-          #if self.__distancia > self.__controlador_sistema.controlador_aeronaves.aeronave.distancia:
-              #print("Aeronave nao percorre distancia requerida!")  
-      
+
       
 
 
@@ -90,11 +80,33 @@ class ControladorVoos:
         raise Exception
       else:
         for voo in self.__voos:
-          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo})
+          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo, "aeronave":voo.aeronave})
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     
     
+  def incluir_passageiro(self):
+    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+   
+  
+  
+  def excluir_passageiro(self):
+    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+  
+  def listar_passageiro(self):
+    try:
+      if not self.__passageiros:
+        raise Exception
+      else:
+        for passageiro in self.__passageiros:
+          self.__tela_voo.mostra_mensagem(passageiro)
+    except Exception:
+      self.__tela_voo.mostra_mensagem("\nNENHUM  PASSAGEIRO ENCONTRADO!\n")
+  
+  
+  
+  
+  
   
   def excluir_voo(self):
     self.lista_voos()
@@ -110,20 +122,15 @@ class ControladorVoos:
   def retornar(self):
     self.__controlador_sistema.abre_tela()
   
-  def lista_planos(self):
+  def lista_plano(self):
     self.__controlador_sistema.controlador_planos_de_voo.lista_planos_de_voos()
     
-  ###############################################
-  
-    
-  ######################################################
-    
-
   def abre_tela(self):
     lista_opcoes = {
                   
-                    1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo, 
-                    9: self.lista_planos,
+                    1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo,
+                    5: self.incluir_passageiro, 6: self.excluir_passageiro, 7: self.listar_passageiro, 
+                    9: self.lista_plano,
                     
                     0: self.retornar}
    
