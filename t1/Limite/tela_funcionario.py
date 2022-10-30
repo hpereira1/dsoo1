@@ -13,7 +13,7 @@ class TelaFuncionario(TelaAbstrata):
     print("5 - Incluir cargo")
     print("6 - Alterar cargo")
     print("7 - Listar cargo")
-    print("9 - Excluir cargo")
+    print("8 - Excluir cargo")
     print("0 - Retornar")
 
     opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5,6,7,8,9])
@@ -26,8 +26,7 @@ class TelaFuncionario(TelaAbstrata):
       nome = input("Nome: ")
       id = input("ID: ")
       email = input("Email: ")
-      cargo = input("Cargo: ")
-      return {"nome": nome, "id": id, "email": email, "cargo": cargo}
+      return {"nome": nome, "id": id, "email": email}
     except TypeError:
       self.mostra_mensagem("typeError")
 

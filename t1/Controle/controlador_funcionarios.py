@@ -35,6 +35,8 @@ class ControladorFuncionarios:
         funcionario = self.pega_funcionario_por_id(dados_funcionario["id"])
         try:
             if funcionario == None:
+                self.lista_cargos()
+                dados_funcionario["cargo"] = self.__tela_funcionario.seleciona_cargo()
                 funcionario = Funcionario(dados_funcionario["nome"], dados_funcionario["id"],dados_funcionario["email"], dados_funcionario["cargo"])
                 self.__funcionarios.append(funcionario)
                 self.lista_funcionarios()
@@ -66,6 +68,9 @@ class ControladorFuncionarios:
                 funcionario.nome = novos_dados_cargo["nome"]
                 funcionario.id = novos_dados_cargo["id"]
                 funcionario.email = novos_dados_cargo["email"]
+                self.lista_cargos()
+                id_cargo = self.__tela_funcionario.seleciona_cargo()
+                funcionario.cargo = self.pega_cargo_por_id(id_cargo)
                 self.lista_funcionarios()
             else:
                 raise Exception
@@ -78,7 +83,7 @@ class ControladorFuncionarios:
                 raise Exception
             else:        
                 for funcionario in self.__funcionarios:
-                    self.__tela_funcionario.mostra_mensagem({"nome": funcionario.nome, "id": funcionario.id})
+                    self.__tela_funcionario.mostra_mensagem({"nome": funcionario.nome, "id": funcionario.id, "cargo": funcionario.cargo})
         except Exception:
             self.__tela_funcionario.mostra_mensagem("\nNENHUM funcionario ENCONTRADO!\n")             
   
