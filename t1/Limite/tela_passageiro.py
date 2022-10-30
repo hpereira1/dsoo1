@@ -14,7 +14,7 @@ class TelaPassageiro(TelaAbstrata):
     print("4 - Excluir passageiro")
     print("0 - Retornar")
 
-    opcao = self.le_num_inteiro()
+    opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4])
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado

@@ -1,10 +1,9 @@
-from ast import Raise
-from pessoa import Pessoa
+from Entidade.pessoa import Pessoa
 from abc import ABC,abstractmethod
-from t1.Entidade.cargo import Cargo
+from Entidade.cargo import Cargo
 
 class Funcionario(Pessoa):
-    def __init__(self, nome: str, id: int, email: str, cargo: Cargo):
+    def __init__(self, nome: str, id: str, email: str, cargo: Cargo):
         super().__init__(nome, id, email)    
         self.__cargo = Cargo
         
