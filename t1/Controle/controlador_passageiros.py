@@ -4,7 +4,7 @@ from Entidade.passageiro import Passageiro
 
 class ControladorPassageiros:
     def __init__(self, controlador_sistema):
-        self.__passageiros = ["a","b"]
+        self.__passageiros = []
         self.__tela_passageiro = TelaPassageiro()
         self.__controlador_sistema = controlador_sistema
         
@@ -19,7 +19,7 @@ class ControladorPassageiros:
         self.__controlador_sistema.abre_tela()
 
     
-    def pega_passageiro_por_id(self, id: str):
+    def pega_passageiro_por_id(self, id):
         for passageiro in self.__passageiros:
             if(passageiro.id == id):
                 return passageiro
