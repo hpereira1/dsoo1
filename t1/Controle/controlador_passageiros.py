@@ -4,7 +4,7 @@ from Entidade.passageiro import Passageiro
 
 class ControladorPassageiros:
     def __init__(self, controlador_sistema):
-        self.__passageiros = []
+        self.__passageiros = ["a","b"]
         self.__tela_passageiro = TelaPassageiro()
         self.__controlador_sistema = controlador_sistema
         
