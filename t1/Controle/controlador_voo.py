@@ -86,7 +86,7 @@ class ControladorVoos:
     
     
   def incluir_passageiro(self):
-    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+    self.__tela_voo.mostra_mensagem(self.__controlador_sistema.controlador_passageiros.passageiros)
    
   
   
@@ -102,6 +102,9 @@ class ControladorVoos:
           self.__tela_voo.mostra_mensagem(passageiro)
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  PASSAGEIRO ENCONTRADO!\n")
+  
+  def teste (self):        
+    print(self.__controlador_sistema.controlador_passageiros.passageiros)
   
   
   
@@ -129,7 +132,8 @@ class ControladorVoos:
     lista_opcoes = {
                   
                     1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo,
-                    5: self.incluir_passageiro, 6: self.excluir_passageiro, 7: self.listar_passageiro, 
+                    5: self.incluir_passageiro, 6: self.excluir_passageiro, 7: self.listar_passageiro,
+                    8: self.teste, 
                     9: self.lista_plano,
                     
                     0: self.retornar}

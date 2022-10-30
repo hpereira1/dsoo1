@@ -8,6 +8,10 @@ class ControladorPassageiros:
         self.__tela_passageiro = TelaPassageiro()
         self.__controlador_sistema = controlador_sistema
         
+    @property
+    def passageiros(self):
+        return self.__passageiros
+        
     def iniciar(self):
         self.abre_tela()
     
