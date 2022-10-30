@@ -88,7 +88,7 @@ class ControladorFuncionarios:
                 raise Exception
             else:        
                 for cargo in self.__cargos:
-                    self.__tela_funcionario.mostra_mensagem({"descricao": cargo.descricao, "id": cargo.id})
+                    self.__tela_funcionario.mostra_mensagem({"descricao": cargo.descricao, "id": cargo.id, "salario": cargo.salario})
         except Exception:
             self.__tela_funcionario.mostra_mensagem("\nNENHUM cargo ENCONTRADO!\n")             
           

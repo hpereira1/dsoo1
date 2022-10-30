@@ -1,8 +1,6 @@
 from Limite.tela_abstrata import TelaAbstrata
 
 class TelaFuncionario(TelaAbstrata):
-  def __init__(self):
-    super().__init__()
     
     
   def tela_opcoes(self):
@@ -18,7 +16,7 @@ class TelaFuncionario(TelaAbstrata):
     print("9 - Excluir cargo")
     print("0 - Retornar")
 
-    opcao = self.tela_sistema.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5,6,7,8,9])
+    opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5,6,7,8,9])
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
