@@ -34,7 +34,7 @@ class TelaPlanoDeVoo(TelaAbstrata):
     
     def entrada(self,arg):
       print(arg)
-      entrada = input(">")
+      entrada = input("> ")
       return entrada
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado

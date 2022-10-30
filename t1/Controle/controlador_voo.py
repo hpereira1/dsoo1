@@ -89,7 +89,7 @@ class ControladorVoos:
     #self.__tela_voo.mostra_mensagem(self.__controlador_sistema.controlador_passageiros.passageiros)
     self.__controlador_sistema.controlador_passageiros.lista_passageiros()
     passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.__tela_voo.entrada("Digite o id de um passageiro"))
-    self.__passageiros.append(passageiro.nome)
+    self.__passageiros.append(passageiro.id)
     self.__controlador_sistema.controlador_passageiros.lista_passageiros()
     
    
