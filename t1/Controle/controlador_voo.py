@@ -86,7 +86,12 @@ class ControladorVoos:
     
     
   def incluir_passageiro(self):
-    self.__tela_voo.mostra_mensagem(self.__controlador_sistema.controlador_passageiros.passageiros)
+    #self.__tela_voo.mostra_mensagem(self.__controlador_sistema.controlador_passageiros.passageiros)
+    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+    passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.__tela_voo.entrada("Digite o id de um passageiro"))
+    self.__passageiros.append(passageiro.nome)
+    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+    
    
   
   
@@ -133,7 +138,7 @@ class ControladorVoos:
                   
                     1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo,
                     5: self.incluir_passageiro, 6: self.excluir_passageiro, 7: self.listar_passageiro,
-                    8: self.teste, 
+                    #8: self.teste, 
                     9: self.lista_plano,
                     
                     0: self.retornar}

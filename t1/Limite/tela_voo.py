@@ -13,10 +13,10 @@ class TelaVoo(TelaAbstrata):
     print("2 - Alterar voo")
     print("3 - Listar voos")
     print("4 - Excluir voo")
-    print("5 - Incluir passageiros do voo")
+    print("5 - Incluir passageiros no voo")
     print("6 - Excluir passageiros do voo")
     print("7 - Listar passageiros do voo")
-    print("8- Lista passageiros do objto passageiro")
+    #print("8 - Lista passageiros do objto passageiro")
     print("9 - Listar planos de voo")
     print("0 - Retornar")
 

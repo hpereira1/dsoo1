@@ -11,6 +11,9 @@ class ControladorPassageiros:
     @property
     def passageiros(self):
         return self.__passageiros
+    
+    
+    
         
     def iniciar(self):
         self.abre_tela()
