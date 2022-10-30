@@ -9,13 +9,11 @@ class ControladorPassageiros:
         self.__controlador_sistema = controlador_sistema
         
     def iniciar(self):
-        pass
+        self.abre_tela()
     
     def finalizar(self):
         self.__controlador_sistema.abre_tela()
-    
-    def abre_tela_inicial(self):
-        pass
+
     
     def pega_passageiro_por_id(self, id: str):
         for passageiro in self.__passageiros:
@@ -31,6 +29,7 @@ class ControladorPassageiros:
             if passageiro == None:
                 passageiro = Passageiro(dados_passageiro["nome"], dados_passageiro["id"],dados_passageiro["email"])
                 self.__passageiros.append(passageiro)
+                self.lista_passageiros()
             else:
                 raise KeyError
         except KeyError:
@@ -43,20 +42,23 @@ class ControladorPassageiros:
         try:
             if (passageiro is not None):
                 self.__passageiros.remove(passageiro)
+                self.lista_passageiros()
             else:
                 raise Exception
         except Exception:
             self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
     def altera_passageiro(self):
+        self.lista_passageiros()
         id_passageiro = self.__tela_passageiro.seleciona_passageiro()
         passageiro = self.pega_passageiro_por_id(id_passageiro)
         try:
             if passageiro is not None:
                 novos_dados_passageiro = self.__tela_passageiro.pega_dados_passageiro()
-                passageiro.__nome = novos_dados_passageiro["nome"]
-                passageiro.__id = novos_dados_passageiro["id"]
-                passageiro.__email = novos_dados_passageiro["email"]
+                passageiro.nome = novos_dados_passageiro["nome"]
+                passageiro.id = novos_dados_passageiro["id"]
+                passageiro.email = novos_dados_passageiro["email"]
+                self.lista_passageiros()
             else:
                 raise Exception
         except Exception:
@@ -85,9 +87,7 @@ class ControladorPassageiros:
             self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
     def abre_tela(self):
-        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,5: self.pega_passageiro_por_id,6: self.ver_historico_por_id, 0: self.finalizar}
-   
-    
+        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,5: self.pega_passageiro_por_id,6: self.ver_historico_por_id, 0: self.finalizar}    
         continua = True
         while continua:
             lista_opcoes[self.__tela_passageiro.tela_opcoes()]()

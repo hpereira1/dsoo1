@@ -38,7 +38,7 @@ class TelaPassageiro(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_passageiro(self):
     id_passageiro = input("ID do passageiro que deseja selecionar: ")
-    return cpf
+    return id_passageiro
 
   def mostra_mensagem(self, msg):
     print(msg)
