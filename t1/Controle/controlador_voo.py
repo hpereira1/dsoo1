@@ -59,7 +59,7 @@ class ControladorVoos:
 
   def alterar_voo(self):
     try:
-      if not self.__vos:
+      if not self.__voos:
         raise Exception
       else:
         self.lista_voos()
