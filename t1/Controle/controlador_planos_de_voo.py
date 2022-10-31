@@ -39,10 +39,7 @@ class ControladorPlanosDeVoo():
                 self.__tela_plano_de_voo.mostra_mensagem("\nAERONAVES\n")
               
                 self.__controlador_sistema.controlador_aeronaves.seleciona_aeronave(plano_de_voo.distancia, plano_de_voo.codigo, id_voo)
-                
-                
-                                
-               
+                             
             else:
                 raise KeyError
         except KeyError:
@@ -56,9 +53,7 @@ class ControladorPlanosDeVoo():
         plano1.aeronave = aeronave1
         aeronave1.historico_de_voos = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)   
         
-        
-    
-    
+  
     def alterar_plano_de_voo(self):
         
         try:

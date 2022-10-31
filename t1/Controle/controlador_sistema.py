@@ -40,11 +40,6 @@ class ControladorSistema:
     def inicializa_sistema(self):
         self.abre_tela()
 
-    def vazia(self):
-        return None
-
-   
-
     def cadastra_aeronaves(self):                
         self.__controlador_aeronaves.abre_tela()
     
