@@ -20,6 +20,7 @@ class ControladorPlanosDeVoo():
     def incluir_plano_de_voo(self, id_voo:str,numero_passageiros:int):
         dados_plano_de_voo = self.__tela_plano_de_voo.pega_dados_plano_de_voo()
         plano_de_voo = self.pega_plano_de_voo_por_codigo(dados_plano_de_voo["codigo"])
+        
         try:
             if plano_de_voo == None:
                           
@@ -38,7 +39,10 @@ class ControladorPlanosDeVoo():
                 #self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
                 self.__controlador_sistema.controlador_aeronaves.seleciona_aeronave(plano_de_voo.distancia)
                 
-                plano_de_voo.aeronave = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
+                aeronave = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
+                plano_de_voo.aeronave = aeronave
+                aeronave.status = "Ocupada"
+                
                 
                  
                

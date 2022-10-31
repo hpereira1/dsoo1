@@ -64,18 +64,23 @@ class ControladorVoos:
 
 
   def alterar_voo(self):
-    self.lista_voos()
-    id_voo = self.__tela_voo.seleciona_voo()
-    voo = self.pega_voo_por_id(id_voo)
-    
-    if(voo is not None):
-      novos_dados_voo = self.__tela_voo.pega_dados_voo()
-      voo.id = novos_dados_voo["id"]
-      voo.data = novos_dados_voo["data"]
-      
-      self.lista_voos()
-    else:
-      self.__tela_voo.mostra_mensagem("ATENCAO: voo não existente")
+    try:
+      if not self.__vos:
+        raise Exception
+      else:
+        self.lista_voos()
+        id_voo = self.__tela_voo.seleciona_voo()
+        voo = self.pega_voo_por_id(id_voo)
+        
+        if(voo is not None):
+          novos_dados_voo = self.__tela_voo.pega_dados_voo()
+          voo.id = novos_dados_voo["id"]
+          voo.data = novos_dados_voo["data"] 
+          
+        else:
+          self.__tela_voo.mostra_mensagem("ATENCAO: voo não existente")
+    except Exception:
+      self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
 
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
   def lista_voos(self):
