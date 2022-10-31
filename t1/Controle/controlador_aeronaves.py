@@ -82,6 +82,8 @@ class ControladorAeronaves():
               
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA\n")
+  
+  #def muda_historico(self,codigo:str):
                  
                
         
