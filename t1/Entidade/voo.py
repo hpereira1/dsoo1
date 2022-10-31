@@ -1,3 +1,4 @@
+from asyncio import protocols
 import datetime
 from Entidade.plano_de_voo import PlanoDeVoo
 
@@ -9,9 +10,15 @@ class Voo:
         self.__id = id
         self.__data = data
         self.__plano_voo = plano_voo
+        self.__passageiros_voo = []
+        self.__tripulantes_voo = []    
     
-    
- 
+    @property
+    def passageiros_voo(self):
+        return self.__passageiros_voo
+    @property
+    def tripulantes_voo(self):
+        return self.__tripulantes_voo
     @property
     def id(self):
         return self.__id
@@ -32,5 +39,11 @@ class Voo:
         self.__data = data
     @plano_voo.setter
     def plano_voo (self,plano_voo):
-        self.__plano_voo = plano_voo                       
-        
+        self.__plano_voo = plano_voo         
+    
+    @passageiros_voo.setter
+    def passageiros_voo(self, passageiros_voo):
+        self.__passageiros_voo = passageiros_voo
+    @tripulantes_voo.setter
+    def tripulantes_voo(self, tripulantes_voo):
+        self.tripulantes_voo = tripulantes_voo
