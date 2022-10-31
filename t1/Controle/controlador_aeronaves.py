@@ -45,7 +45,7 @@ class ControladorAeronaves():
       aeronave.peso_max_decolagem = novos_dados_aeronave["peso_max_decolagem"]
       aeronave.distancia_maxima = novos_dados_aeronave["distancia_maxima"]
       aeronave.numero_min_tripulantes = novos_dados_aeronave["numero_min_tripulantes"]
-      aeronave.status = novos_dados_aeronave["status"]
+      #aeronave.status = novos_dados_aeronave["status"]
     
       self.lista_aeronaves()
     else:
