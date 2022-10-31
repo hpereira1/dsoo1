@@ -24,12 +24,16 @@ class TelaAeronave(TelaAbstrata):
     codigo = input("Codigo: ")
     modelo = input("Modelo: ")
     combustivel = self.tela_sistema.le_num_inteiro("Combustivel (kg): ")
+    numero_max_passageiros = self.tela_sistema.le_num_inteiro("Numero maximo passageiros: ")
+    peso_max_decolagem = self.tela_sistema.le_num_inteiro("Peso maximo decolagem (kg): ")
+    distancia_maxima = self.tela_sistema.le_num_inteiro("Distancia maxima (km): ")
+    numero_min_tripulantes = self.tela_sistema.le_num_inteiro("Numero minimo tripulantes: ")
     #combustivel = input("Combustivel (kg): ")
     #self.tela_sistema.sao_numeros(combustivel)
-    numero_max_passageiros = input("Numero maximo de passageiros: ")
-    peso_max_decolagem = input("Peso maximo de decolagem (kg): ")
-    distancia_maxima = input("Distancia maxima (km): ")
-    numero_min_tripulantes = input("Numero minimo de tripulantes: ")
+    #numero_max_passageiros = input("Numero maximo de passageiros: ")    
+    #peso_max_decolagem = input("Peso maximo de decolagem (kg): ")
+    #distancia_maxima = input("Distancia maxima (km): ")
+    #numero_min_tripulantes = input("Numero minimo de tripulantes: ")
     
     return {"codigo": codigo, "modelo": modelo, 
             "combustivel":combustivel, "numero_max_passageiros": numero_max_passageiros, 
