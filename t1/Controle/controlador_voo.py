@@ -45,7 +45,8 @@ class ControladorVoos:
               break
           self.tela_voo.mostra_mensagem("\nCRIANDO PLANO DE VOO\n")
           numero_passageiros = len(voo.passageiros_voo)
-          self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)   
+          self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)
+            
         
         else:
           raise KeyError
