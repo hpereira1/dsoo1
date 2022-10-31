@@ -22,7 +22,9 @@ class TelaAbstrata(ABC):
         try:
             if arg.isdigit() == False:
                 raise ValueError
+            else:
+                return arg
         except ValueError:
-            print("Somente numeros")
+            print("Somente numeros sao aceitos")
             
     
