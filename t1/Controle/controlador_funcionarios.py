@@ -1,14 +1,13 @@
 from Limite.tela_funcionario import TelaFuncionario
 from Entidade.funcionario import Funcionario
 from Entidade.cargo import Cargo
-from Entidade import cargo
 
 class ControladorFuncionarios:
     def __init__(self, controlador_sistema):
         self.__funcionarios = []
         self.__tela_funcionario = TelaFuncionario()
         self.__controlador_sistema = controlador_sistema
-        self.__cargos = []
+        self.__cargos = [Cargo("PILOTO", "0", 10000), Cargo("COMISSARIO", "1" , 3000)]
         
     def iniciar(self):
         self.abre_tela()

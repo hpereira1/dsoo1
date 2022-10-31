@@ -2,10 +2,6 @@
 from Limite.tela_voo import TelaVoo
 from Entidade.voo import Voo
 
-
-
-
-
 class ControladorVoos:
 
   def __init__(self, controlador_sistema):
@@ -17,16 +13,12 @@ class ControladorVoos:
   @property
   def tela_voo(self):
     return self.__tela_voo
-    
-  
 
   def pega_voo_por_id(self, id: str):
     for voo in self.__voos:
       if(voo.id == id):
         return voo
     return None
-  
-  
       
   def incluir_voo(self):
       dados_voo = self.tela_voo.pega_dados_voo()
@@ -43,6 +35,11 @@ class ControladorVoos:
             aux = input(self.tela_voo.mostra_mensagem("incluir mais passageiros? "))
             if aux in "NAOnao":
               break
+          while True:
+            self.incluir_tripulante(voo)
+            aux1 = input(self.tela_voo.mostra_mensagem("incluir mais funcionario? "))
+            if aux1 in "NAOnao":
+              break
           self.tela_voo.mostra_mensagem("\nCRIANDO PLANO DE VOO\n")
           numero_passageiros = len(voo.passageiros_voo)
           self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)   
@@ -51,12 +48,7 @@ class ControladorVoos:
           raise KeyError
       except KeyError:
         self.__tela_voo.mostra_mensagem("Voo já existente!")
-      
-
-
-      
-
-
+          
   def alterar_voo(self):
     try:
       if not self.__voos:
@@ -83,7 +75,7 @@ class ControladorVoos:
         raise Exception
       else:
         for voo in self.__voos:
-          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo})
+          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo, "passageiros_voo": voo.passageiros_voo, "tripulantes_voo": voo.tripulantes_voo})
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     
@@ -94,32 +86,12 @@ class ControladorVoos:
       passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.tela_voo.entrada("Digite o id de um passageiro"))
       voo.passageiros_voo.append(passageiro)
       passageiro.historico_de_voos.append(voo)
-   
-  
-  
-  def excluir_passageiro(self):
-    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
-    passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.__tela_voo.entrada("Digite o id de um passageiro"))
-    self.__passageiros.remove(passageiro.id)
-    
-  
-  def listar_passageiro(self):
-    try:
-      if not self.__passageiros:
-        raise Exception
-      else:
-        for passageiro in self.__passageiros:
-          self.__tela_voo.mostra_mensagem(passageiro)
-    except Exception:
-      self.__tela_voo.mostra_mensagem("\nNENHUM  PASSAGEIRO ENCONTRADO!\n")
-  
-  def teste (self):        
-    print(self.__controlador_sistema.controlador_passageiros.passageiros)
-  
-  
-  
-  
-  
+
+  def incluir_tripulante(self,voo):
+      #self.tela_voo.mostra_mensagem(self.controlador_sistema.controlador_passageiros.passageiros)
+      self.__controlador_sistema.controlador_funcionarios.lista_funcionarios()
+      funcionario = self.__controlador_sistema.controlador_funcionarios.pega_funcionario_por_id(self.tela_voo.entrada("Digite o id de um funcionario"))
+      voo.tripulantes_voo.append(funcionario)
   
   def excluir_voo(self):
     self.lista_voos()
@@ -142,12 +114,9 @@ class ControladorVoos:
     lista_opcoes = {
                   
                     1: self.incluir_voo, 2: self.alterar_voo, 3: self.lista_voos, 4: self.excluir_voo,
-                    5: self.incluir_passageiro, 6: self.excluir_passageiro, 7: self.listar_passageiro,
-                    #8: self.teste, 
-                    9: self.lista_plano,
+                    5: self.lista_plano,
                     
                     0: self.retornar}
-   
     
     continua = True
     while continua:

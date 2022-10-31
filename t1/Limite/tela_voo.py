@@ -13,15 +13,11 @@ class TelaVoo(TelaAbstrata):
     print("2 - Alterar voo")
     print("3 - Listar voos")
     print("4 - Excluir voo")
-    print("5 - Incluir passageiros no voo")
-    print("6 - Excluir passageiros do voo")
-    print("7 - Listar passageiros do voo")
-    #print("8 - Lista passageiros do objto passageiro")
-    print("9 - Listar planos de voo")
+    print("5 - Listar planos de voo")
     print("0 - Retornar")
 
     
-    opcao = self.tela_sistema.le_num_inteiro()
+    opcao = self.tela_sistema.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5])
     
     return opcao
   
@@ -52,7 +48,8 @@ class TelaVoo(TelaAbstrata):
     print("ID DO VOO: ", dados_voo["id"])
     print("DATA DO VOO: ", dados_voo["data"])
     print("PLANO DE VOO: ", dados_voo["plano_de_voo"])
-    #print("AERONAVE: ", dados_voo["aeronave"])
+    print("lista passageiros: ", dados_voo["passageiros_voo"])
+    print("lista tripulacao: ", dados_voo["tripulantes_voo"])
     
     print("\n")
 

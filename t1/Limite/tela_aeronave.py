@@ -14,7 +14,7 @@ class TelaAeronave(TelaAbstrata):
     print("0 - Retornar")
 
     
-    opcao = self.tela_sistema.le_num_inteiro()
+    opcao = self.tela_sistema.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4])
     
     return opcao
 
