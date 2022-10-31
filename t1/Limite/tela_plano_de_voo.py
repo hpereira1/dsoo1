@@ -7,10 +7,10 @@ class TelaPlanoDeVoo(TelaAbstrata):
     def tela_opcoes(self):
         print("-------- PLANOS DE VOO ----------")
         print("Escolha a opcao")
-        print("1 - Incluir Plano de Voo")
+        #print("1 - Incluir Plano de Voo")
         print("2 - Alterar Plano de Voo")
         print("3 - Listar Planos de Voo")
-        print("4 - Excluir Plano de Voo")
+        #print("4 - Excluir Plano de Voo")
         print("0 - Retornar")
 
         opcao = int(input("Escolha a opcao: "))

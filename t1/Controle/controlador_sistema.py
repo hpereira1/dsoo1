@@ -49,7 +49,7 @@ class ControladorSistema:
         self.__controlador_aeronaves.abre_tela()
     
     def plano_de_voo(self):
-        self.__controlador_planos_de_voo.lista_planos_de_voos()
+        self.__controlador_planos_de_voo.abre_tela()
     
     def voo(self):
         self.__controlador_voo.abre_tela()
@@ -64,7 +64,7 @@ class ControladorSistema:
         exit(0)
 
     def abre_tela(self):
-        lista_opcoes = {1: self.cadastra_aeronaves, 2: self.voo, 3: self.plano_de_voo, 4: self.passageiros, 5: self.funcionarios, 0: self.encerra_sistema}
+        lista_opcoes = {1: self.cadastra_aeronaves, 2: self.voo, 3: self.passageiros, 4: self.funcionarios, 0: self.encerra_sistema}
         
 
         while True:

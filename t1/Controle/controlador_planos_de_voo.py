@@ -63,22 +63,26 @@ class ControladorPlanosDeVoo():
     
     
     def alterar_plano_de_voo(self):
-        self.lista_planos_de_voos()
-        codigo_plano_de_voo = self.__tela_plano_de_voo.seleciona_plano_de_voo()
-        plano_de_voo = self.pega_plano_de_voo_por_codigo(codigo_plano_de_voo)
-    
-        if(plano_de_voo is not None):
-            novos_dados_plano_de_voo = self.__tela_plano_de_voo.pega_dados_plano_de_voo()
-           # plano_de_voo.id_voo = novos_dados_plano_de_voo["id_voo"]
-            plano_de_voo.codigo = novos_dados_plano_de_voo["codigo"]
-            plano_de_voo.distancia = novos_dados_plano_de_voo["distancia"]
-            plano_de_voo.numero_passageiros = novos_dados_plano_de_voo["numero_passageiros"]
-            plano_de_voo.peso = novos_dados_plano_de_voo["peso"]
-            plano_de_voo.aeronave = novos_dados_plano_de_voo["aeronave"]     
         
-            self.lista_planos_de_voos()
-        else:
-            self.__tela_plano_de_voo.mostra_mensagem("ATENCAO: plano_de_voo não existente")
+        try:
+            if not self.__planos_de_voo:
+                raise Exception
+            else:
+                self.lista_planos_de_voos()
+                codigo_plano_de_voo = self.__tela_plano_de_voo.seleciona_plano_de_voo()
+                plano_de_voo = self.pega_plano_de_voo_por_codigo(codigo_plano_de_voo)
+                if(plano_de_voo is not None):
+                    novos_dados_plano_de_voo = self.__tela_plano_de_voo.pega_dados_plano_de_voo()
+                # plano_de_voo.id_voo = novos_dados_plano_de_voo["id_voo"]
+                    plano_de_voo.codigo = novos_dados_plano_de_voo["codigo"]
+                    plano_de_voo.distancia = novos_dados_plano_de_voo["distancia"]
+                    plano_de_voo.numero_passageiros = novos_dados_plano_de_voo["numero_passageiros"]
+                    plano_de_voo.peso = novos_dados_plano_de_voo["peso"]
+                    plano_de_voo.aeronave = novos_dados_plano_de_voo["aeronave"]     
+                
+                    self.lista_planos_de_voos()
+        except Exception:
+            self.__tela_plano_de_voo.mostra_mensagem("NENHUM PLANO DE VOO ENCONTRADO")
 
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
     def lista_planos_de_voos(self):        
