@@ -86,7 +86,7 @@ class ControladorAeronaves():
   # def lista_historico(self):
   #   aeronave2 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_aeronave.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
   #   for i in aeronave2.historico_de_voos[i]:
-  #     self.__tela_aeronave.mostra(i)
+  #     self.__tela_aeronave.mostra_mensagem(i)
        
                  
                
