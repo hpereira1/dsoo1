@@ -5,7 +5,7 @@ from Entidade.aeronave import Aeronave
 class ControladorAeronaves():
 
   def __init__(self, controlador_sistema):
-    self.__aeronaves = [Aeronave(0,1,1,10,10, 10,1)]
+    self.__aeronaves = [Aeronave(0,1,1,10,10, 10,1),Aeronave(20,1,1,10,10, 20,1)]
     self.__tela_aeronave = TelaAeronave()
     self.__controlador_sistema = controlador_sistema
 
@@ -65,7 +65,7 @@ class ControladorAeronaves():
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")   
       
-  def seleciona_aeronave(self,distancia:str):
+  def seleciona_aeronave(self,distancia:str,codigo:str):
     try:
       if not self.__aeronaves:
         raise Exception
@@ -78,7 +78,7 @@ class ControladorAeronaves():
                                                   "distancia_maxima":aeronave.distancia_maxima,
                                                   "status":aeronave.status})
         
-        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano()                  
+        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo)                  
               
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA\n")
