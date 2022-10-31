@@ -35,8 +35,9 @@ class ControladorPlanosDeVoo():
                 voo = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)
                 voo.plano_de_voo = plano_de_voo
                 self.__tela_plano_de_voo.mostra_mensagem("\nAERONAVES\n")  
-                self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
-                #self.__controlador_sistema.controlador_planos_de_voo.seleciona_aeronave()
+                #self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
+                self.__controlador_sistema.controlador_aeronaves.seleciona_aeronave(plano_de_voo.distancia)
+                
                 plano_de_voo.aeronave = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
                 
                  
