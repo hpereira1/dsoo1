@@ -89,7 +89,7 @@ class ControladorVoos:
         raise Exception
       else:
         for voo in self.__voos:
-          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo, "aeronave":voo.aeronave})
+          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo})
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     

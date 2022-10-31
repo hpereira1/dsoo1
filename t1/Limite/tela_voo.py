@@ -52,7 +52,7 @@ class TelaVoo(TelaAbstrata):
     print("ID DO VOO: ", dados_voo["id"])
     print("DATA DO VOO: ", dados_voo["data"])
     print("PLANO DE VOO: ", dados_voo["plano_de_voo"])
-    print("AERONAVE: ", dados_voo["aeronave"])
+    #print("AERONAVE: ", dados_voo["aeronave"])
     
     print("\n")
 

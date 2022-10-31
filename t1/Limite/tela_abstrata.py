@@ -17,3 +17,12 @@ class TelaAbstrata(ABC):
                 print("Valor incorreto!")
                 if ints_validos:
                     print("Valores válidos: ", ints_validos)
+    
+    def sao_numeros(self, arg):
+        try:
+            if arg.isdigit() == False:
+                raise ValueError
+        except ValueError:
+            print("Somente numeros")
+            
+    
