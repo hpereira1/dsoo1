@@ -66,13 +66,14 @@ class ControladorAeronaves():
       if not self.__aeronaves:
         raise Exception
       else:
-        for aeronave in self.__aeronaves:
-          if aeronave.distancia_maxima > distancia:
+        for aeronave in self.__aeronaves:          
+          if int(aeronave.distancia_maxima) > int(distancia):
             self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, "distancia_maxima":aeronave.distancia_maxima})
           #else:
             #self.__tela_aeronave.mostra_mensagem("Nenhum aeronave capaz de cobrir a distancia de voo!")
     except Exception:
-      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")            
+      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")
+      #self.__controlador_sistema.controlador_voo.tela_voo.tela_opcoes()            
         
 
   def excluir_aeronave(self):
