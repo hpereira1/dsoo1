@@ -28,37 +28,31 @@ class ControladorVoos:
   
   
       
-    
-
-  #testagem com lançamento de exceção para voos já existentes!
   def incluir_voo(self):
-    dados_voo = self.__tela_voo.pega_dados_voo()
-    voo = self.pega_voo_por_id(dados_voo["id"])
-    try:
-      if voo == None:
+      dados_voo = self.tela_voo.pega_dados_voo()
+      voo = self.pega_voo_por_id(dados_voo["id"])
+      try:
+        if voo == None:
+
+          voo = Voo(
+                              dados_voo["id"], dados_voo["data"]
+                              )
+          self.__voos.append(voo)
+          while True:
+            self.incluir_passageiro(voo)
+            aux = input(self.tela_voo.mostra_mensagem("incluir mais passageiros? "))
+            if aux in "NAOnao":
+              break
+          self.tela_voo.mostra_mensagem("\nCRIANDO PLANO DE VOO\n")
+          numero_passageiros = len(voo.passageiros_voo)
+          self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)   
         
-        voo = Voo(
-                            dados_voo["id"], dados_voo["data"]
-                            )
-        self.__voos.append(voo)        
-        self.__tela_voo.mostra_mensagem("\nCRIANDO PLANO DE VOO\n")      
-        numero_passageiros = len(self.__passageiros)              
-        self.__controlador_sistema.controlador_planos_de_voo.incluir_plano_de_voo(dados_voo["id"],numero_passageiros)
-        
-        
-        #self.__tela_voo.mostra_mensagem("\nAERONAVES\n")  
-        #self.__controlador_sistema.controlador_aeronaves.lista_aeronaves()
-        #self.__controlador_sistema.controlador_planos_de_voo.seleciona_aeronave()
-        #voo.aeronave = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
-        
-       
-        
-      else:
-        raise KeyError
-    except KeyError:
-      self.__tela_voo.mostra_mensagem("Voo já existente!")
-    
-    
+        else:
+          raise KeyError
+      except KeyError:
+        self.__tela_voo.mostra_mensagem("Voo já existente!")
+      
+
 
       
 
@@ -93,14 +87,13 @@ class ControladorVoos:
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     
-    
-  def incluir_passageiro(self):
-    #self.__tela_voo.mostra_mensagem(self.__controlador_sistema.controlador_passageiros.passageiros)
-    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
-    passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.__tela_voo.entrada("Digite o id de um passageiro"))
-    self.__passageiros.append(passageiro.id)
-    self.__controlador_sistema.controlador_passageiros.lista_passageiros()
-    
+
+  def incluir_passageiro(self,voo):
+      #self.tela_voo.mostra_mensagem(self.controlador_sistema.controlador_passageiros.passageiros)
+      self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+      passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.tela_voo.entrada("Digite o id de um passageiro"))
+      voo.passageiros_voo.append(passageiro)
+      passageiro.historico_de_voos.append(voo)
    
   
   

@@ -5,7 +5,7 @@ from Entidade.aeronave import Aeronave
 class ControladorAeronaves():
 
   def __init__(self, controlador_sistema):
-    self.__aeronaves = []
+    self.__aeronaves = [Aeronave(0,1,1,10,10, 10,1)]
     self.__tela_aeronave = TelaAeronave()
     self.__controlador_sistema = controlador_sistema
 

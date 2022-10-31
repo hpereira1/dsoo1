@@ -4,7 +4,7 @@ from Entidade.passageiro import Passageiro
 
 class ControladorPassageiros:
     def __init__(self, controlador_sistema):
-        self.__passageiros = []
+        self.__passageiros = [Passageiro("henrique", "0", "ik"),Passageiro("Eduardo","1","edu")]
         self.__tela_passageiro = TelaPassageiro()
         self.__controlador_sistema = controlador_sistema
         
@@ -82,19 +82,20 @@ class ControladorPassageiros:
             self.__tela_passageiro.mostra_mensagem("\nNENHUM PASSAGEIRO ENCONTRADO!\n")             
             
     def ver_historico_por_id(self):
+        self.lista_passageiros()
         id_passageiro = self.__tela_passageiro.seleciona_passageiro()
         passageiro = self.pega_passageiro_por_id(id_passageiro)
         try:
             if(passageiro is not None):
-                for voo in passageiro.__historico_de_voos:
-                    self.__tela_passageiro.mostra_mensagem({"id": voo.__id, "data": voo.__data})
+                for voo in passageiro.historico_de_voos:
+                    self.__tela_passageiro.mostra_mensagem({"id": voo.id, "data": voo.data})
             else:
                 raise Exception
         except Exception:
             self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
     def abre_tela(self):
-        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,5: self.pega_passageiro_por_id,6: self.ver_historico_por_id, 0: self.finalizar}    
+        lista_opcoes = {1: self.inclui_passageiro, 2: self.altera_passageiro, 3: self.lista_passageiros, 4: self.remove_passageiro,6: self.pega_passageiro_por_id,5: self.ver_historico_por_id, 0: self.finalizar}    
         continua = True
         while continua:
             lista_opcoes[self.__tela_passageiro.tela_opcoes()]()

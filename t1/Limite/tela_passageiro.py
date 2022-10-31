@@ -12,9 +12,10 @@ class TelaPassageiro(TelaAbstrata):
     print("2 - Alterar passageiro")
     print("3 - Listar passageiros")
     print("4 - Excluir passageiro")
+    print("5 - lista historico por id")
     print("0 - Retornar")
 
-    opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4])
+    opcao = self.le_num_inteiro("Escolha a opcao:", [0,1,2,3,4,5])
     return opcao
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
