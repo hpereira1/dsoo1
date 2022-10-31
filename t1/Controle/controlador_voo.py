@@ -13,6 +13,10 @@ class ControladorVoos:
     self.__voos = []
     self.__tela_voo = TelaVoo()
     self.__controlador_sistema = controlador_sistema
+  
+  @property
+  def tela_voo(self):
+    return self.__tela_voo
     
   
 
