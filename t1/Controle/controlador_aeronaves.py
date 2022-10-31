@@ -65,7 +65,7 @@ class ControladorAeronaves():
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")   
       
-  def seleciona_aeronave(self,distancia:str,codigo:str):
+  def seleciona_aeronave(self,distancia:str,codigo:str,id_voo:str):
     try:
       if not self.__aeronaves:
         raise Exception
@@ -78,12 +78,16 @@ class ControladorAeronaves():
                                                   "distancia_maxima":aeronave.distancia_maxima,
                                                   "status":aeronave.status})
         
-        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo)                  
+        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo)                  
               
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA\n")
   
-  #def muda_historico(self,codigo:str):
+  # def lista_historico(self):
+  #   aeronave2 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_aeronave.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))
+  #   for i in aeronave2.historico_de_voos[i]:
+  #     self.__tela_aeronave.mostra(i)
+       
                  
                
         
@@ -103,7 +107,9 @@ class ControladorAeronaves():
     self.__controlador_sistema.abre_tela()
 
   def abre_tela(self):
-    lista_opcoes = {1: self.incluir_aeronave, 2: self.alterar_aeronave, 3: self.lista_aeronaves, 4: self.excluir_aeronave, 0: self.retornar}
+    lista_opcoes = {1: self.incluir_aeronave, 2: self.alterar_aeronave, 3: self.lista_aeronaves, 4: self.excluir_aeronave,
+                    #5:self.lista_historico,
+                    0: self.retornar}
    
     
     continua = True

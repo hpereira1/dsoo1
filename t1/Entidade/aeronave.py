@@ -11,7 +11,7 @@ class Aeronave:
         self.__peso_max_decolagem = peso_max_decolagem
         self.__distancia_maxima = distancia_maxima
         self.__numero_min_tripulates = numero_min_tripulates
-        self.__historico_de__voos = []
+        self.__historico_de_voos = []
         self.__status = status
 
 
@@ -49,8 +49,8 @@ class Aeronave:
         return self.__numero_min_tripulates
    
     @property
-    def historico_de__voos(self):
-        return self.__historico_de__voos
+    def historico_de_voos(self):
+        return self.__historico_de_voos
 
     @status.setter
     def status(self, status):
@@ -85,6 +85,6 @@ class Aeronave:
     def numero_min_tripulates(self, numero_min_tripulates):
         self.__numero_min_tripulates = numero_min_tripulates
    
-    @historico_de__voos.setter
-    def historico_de__voos(self, historico_de__voos):
-        self.__historico_de__voos = historico_de__voos
+    @historico_de_voos.setter
+    def historico_de_voos(self, historico_de_voos):
+        self.__historico_de_voos = historico_de_voos

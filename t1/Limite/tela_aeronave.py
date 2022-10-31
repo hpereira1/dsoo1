@@ -11,6 +11,7 @@ class TelaAeronave(TelaAbstrata):
     print("2 - Alterar aeronave")
     print("3 - Listar aeronaves")
     print("4 - Excluir aeronave")
+    #print("5 - Historico aeronave")
     print("0 - Retornar")
 
     
@@ -51,6 +52,11 @@ class TelaAeronave(TelaAbstrata):
     print("Numero minimo de tripulantes: ", dados_aeronave["numero_min_tripulantes"])
    
     print("\n")
+    
+  def entrada(self,arg):
+      print(arg)
+      entrada = input("> ")
+      return entrada
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_aeronave(self):

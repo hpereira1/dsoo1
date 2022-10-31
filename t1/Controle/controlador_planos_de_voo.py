@@ -38,7 +38,7 @@ class ControladorPlanosDeVoo():
                 
                 self.__tela_plano_de_voo.mostra_mensagem("\nAERONAVES\n")
               
-                self.__controlador_sistema.controlador_aeronaves.seleciona_aeronave(plano_de_voo.distancia, plano_de_voo.codigo)
+                self.__controlador_sistema.controlador_aeronaves.seleciona_aeronave(plano_de_voo.distancia, plano_de_voo.codigo, id_voo)
                 
                 
                                 
@@ -48,12 +48,13 @@ class ControladorPlanosDeVoo():
         except KeyError:
             self.__tela_plano_de_voo.mostra_mensagem("Plano de voo já existente!")
     
-    def inclui_aeronave_plano(self,codigo:str):
+    def inclui_aeronave_plano(self,codigo:str,id_voo:str):
       
         aeronave1 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))        
         aeronave1.status = "Ocupada"
         plano1 = self.__controlador_sistema.controlador_planos_de_voo.pega_plano_de_voo_por_codigo(codigo)        
-        plano1.aeronave = aeronave1   
+        plano1.aeronave = aeronave1
+        aeronave1.historico_de_voos = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)   
         
         
     
