@@ -5,7 +5,7 @@ from Entidade.aeronave import Aeronave
 class ControladorAeronaves():
 
   def __init__(self, controlador_sistema):
-    self.__aeronaves = [Aeronave(0,1,1,10,10, 10,1),Aeronave(20,1,1,10,10, 20,1)]
+    self.__aeronaves = [Aeronave(0,1,1,10,10,10,1),Aeronave(20,1,1,10,10,20,1)]
     self.__tela_aeronave = TelaAeronave()
     self.__controlador_sistema = controlador_sistema
 
@@ -45,7 +45,7 @@ class ControladorAeronaves():
       aeronave.peso_max_decolagem = novos_dados_aeronave["peso_max_decolagem"]
       aeronave.distancia_maxima = novos_dados_aeronave["distancia_maxima"]
       aeronave.numero_min_tripulantes = novos_dados_aeronave["numero_min_tripulantes"]
-      #aeronave.status = novos_dados_aeronave["status"]
+      aeronave.status = novos_dados_aeronave["status"]
     
       self.lista_aeronaves()
     else:
@@ -58,10 +58,20 @@ class ControladorAeronaves():
         raise Exception
       else:        
         for aeronave in self.__aeronaves:
-          self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo,
-                                                "distancia_maxima":aeronave.distancia_maxima,
-                                               "status":aeronave.status
-                                               })         
+          dados_aeronave = []          
+          dados_aeronave.append({"codigo": aeronave.codigo, "modelo":aeronave.modelo,
+                                 "combustivel": aeronave.combustivel,                                                
+                                              "numero_max_passageiros": aeronave.numero_max_passageiros,
+                                              "peso_max_decolagem": aeronave.peso_max_decolagem,
+                                              "distancia_maxima":aeronave.distancia_maxima,
+                                              "numero_min_tripulantes": aeronave.numero_min_tripulantes,                                                                                           
+                                              "status":aeronave.status
+                                             })
+          self.__tela_aeronave.mostra_aeronave(dados_aeronave) 
+          # self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo,
+          #                                       "distancia_maxima":aeronave.distancia_maxima,
+          #                                     "status":aeronave.status
+          #                                     })         
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")   
       

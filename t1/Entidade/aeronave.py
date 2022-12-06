@@ -1,7 +1,7 @@
 class Aeronave:
     def __init__(self, codigo:int, modelo:int, 
                  combustivel:int, numero_max_passageiros: int, peso_max_decolagem: int, distancia_maxima: int, 
-                 numero_min_tripulates: int,
+                 numero_min_tripulantes: int,
                  status: str = "Livre"
                  ):
         self.__codigo = codigo
@@ -10,7 +10,7 @@ class Aeronave:
         self.__numero_max_passageiros = numero_max_passageiros
         self.__peso_max_decolagem = peso_max_decolagem
         self.__distancia_maxima = distancia_maxima
-        self.__numero_min_tripulates = numero_min_tripulates
+        self.__numero_min_tripulantes = numero_min_tripulantes
         self.__historico_de_voos = []
         self.__status = status
 
@@ -45,8 +45,8 @@ class Aeronave:
         return self.__distancia_maxima
    
     @property
-    def numero_min_tripulates(self):
-        return self.__numero_min_tripulates
+    def numero_min_tripulantes(self):
+        return self.__numero_min_tripulantes
    
     @property
     def historico_de_voos(self):
@@ -81,9 +81,9 @@ class Aeronave:
     def distancia_maxima(self, distancia_maxima):
         self.__distancia_maxima = distancia_maxima
    
-    @numero_min_tripulates.setter
-    def numero_min_tripulates(self, numero_min_tripulates):
-        self.__numero_min_tripulates = numero_min_tripulates
+    @numero_min_tripulantes.setter
+    def numero_min_tripulantes(self, numero_min_tripulantes):
+        self.__numero_min_tripulantes = numero_min_tripulantes
    
     @historico_de_voos.setter
     def historico_de_voos(self, historico_de_voos):
