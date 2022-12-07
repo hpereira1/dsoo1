@@ -28,7 +28,7 @@ class TelaAeronave(TelaAbstrata):
 
   def init_opcoes(self):
     # sg.theme_previewer()
-    sg.ChangeLookAndFeel('DarkTeal4')
+    sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- AERONAVES ----------', font=("Helvica", 25))],
       [sg.Text('Escolha sua opção', font=("Helvica", 15))],
@@ -40,12 +40,12 @@ class TelaAeronave(TelaAbstrata):
       [sg.Button('Confirmar'), sg.Cancel('Cancelar')],
      
     ]
-    self.__window = sg.Window('Sistema de livros').Layout(layout)
+    self.__window = sg.Window('Sistema cia. aerea').Layout(layout)
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   # opção de tratamento: adicionar um if e só coletar nome e telefone se o button é 'Confirmar'
   def pega_dados_aeronave(self):
-    sg.ChangeLookAndFeel('DarkTeal4')
+    sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- DADOS aeronave ----------', font=("Helvica", 25))],
       [sg.Text('Codigo:', size=(15, 1)), sg.InputText('', key='codigo')],
@@ -88,14 +88,26 @@ class TelaAeronave(TelaAbstrata):
       str_todas_aeronaves = str_todas_aeronaves + "Peso max. decolagem: " + str(dado["peso_max_decolagem"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Distancia maxima: " + str(dado["distancia_maxima"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Numero min. tripulantes: " + str(dado["numero_min_tripulantes"]) + '\n'
-      str_todas_aeronaves = str_todas_aeronaves + "Status: " + dado["status"] + '\n\n'
-   
-
-    sg.Popup('-------- LISTA DE AERONAVES ----------', str_todas_aeronaves)
+      str_todas_aeronaves = str_todas_aeronaves + "Status: " + dado["status"] + '\n\n'  
+    
+      #sg.Popup('-------- LISTA DE AERONAVES ----------', str_todas_aeronaves)
+    col1=[[sg.Text(str_todas_aeronaves)]]
+    #dado1 = str_todas_aeronaves   
+    layout = [     
+      #[sg.Text(dado1)]
+     
+              
+      [sg.Column(col1,scrollable=True)]
+          
+      
+    ]
+    self.__window = sg.Window('Lista aeronave').Layout(layout)
+    values = self.open()
+    
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_aeronave(self):
-    sg.ChangeLookAndFeel('DarkTeal4')
+    sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- SELECIONAR aeronave ----------', font=("Helvica", 25))],
       [sg.Text('Digite o CODIGO do aeronave que deseja selecionar:', font=("Helvica", 15))],

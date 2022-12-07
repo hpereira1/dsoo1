@@ -30,7 +30,7 @@ class TelaSistema(TelaAbstrata):
 
     def init_components(self):
         #sg.theme_previewer()
-        sg.ChangeLookAndFeel('DarkTeal4')
+        sg.ChangeLookAndFeel('DarkBlue')
         layout = [
             [sg.Text('Gerenciador de cia. aérea. Bem vindo!', font=("Helvica",25))],
             [sg.Text('Escolha sua opção', font=("Helvica",15))],
@@ -39,6 +39,7 @@ class TelaSistema(TelaAbstrata):
             [sg.Radio('Passageiros',"RD1", key='3')],
             [sg.Radio('Finalizar sistema',"RD1", key='0')],
             [sg.Button('Confirmar'), sg.Cancel('Cancelar')],
+            
            
         ]
         self.__window = sg.Window('Sistema de livros').Layout(layout)
