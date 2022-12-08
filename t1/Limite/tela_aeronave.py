@@ -80,6 +80,7 @@ class TelaAeronave(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def mostra_aeronave(self, dados_aeronave):
     str_todas_aeronaves = ""
+    #str_teste = ""
     for dado in dados_aeronave:
       str_todas_aeronaves = str_todas_aeronaves + "Codigo da aeronave: " + str(dado["codigo"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Modelo da aeronave: " + str(dado["modelo"]) + '\n'
@@ -92,12 +93,13 @@ class TelaAeronave(TelaAbstrata):
     
       #sg.Popup('-------- LISTA DE AERONAVES ----------', str_todas_aeronaves)
     col1=[[sg.Text(str_todas_aeronaves)]]
-    #dado1 = str_todas_aeronaves   
+    #dado1 = str_todas_aeronaves
+    #str_teste = str_teste + dados_aeronave[0].codigo()   
     layout = [     
-      #[sg.Text(dado1)]
+      [sg.Text(str_todas_aeronaves)]
      
               
-      [sg.Column(col1,scrollable=True)]
+      #[sg.Column(col1,scrollable=True)]
           
       
     ]

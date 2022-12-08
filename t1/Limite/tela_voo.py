@@ -28,7 +28,7 @@ class TelaVoo(TelaAbstrata):
 
     def init_opcoes(self):
       # sg.theme_previewer()
-      sg.ChangeLookAndFeel('DarkTeal4')
+      sg.ChangeLookAndFeel('DarkBlue')
       layout = [
         [sg.Text('-------- VOOS ----------', font=("Helvica", 25))],
         [sg.Text('Escolha sua opção', font=("Helvica", 15))],
@@ -46,7 +46,7 @@ class TelaVoo(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   # opção de tratamento: adicionar um if e só coletar nome e telefone se o button é 'Confirmar'
     def pega_dados_voo(self):
-      sg.ChangeLookAndFeel('DarkTeal4')
+      sg.ChangeLookAndFeel('DarkBlue')
       layout = [
         [sg.Text('-------- DADOS voo ----------', font=("Helvica", 25))],
         [sg.Text('ID:', size=(15, 1)), sg.InputText('', key='id')],
@@ -84,7 +84,7 @@ class TelaVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def seleciona_voo(self):
-      sg.ChangeLookAndFeel('DarkTeal4')
+      sg.ChangeLookAndFeel('DarkBlue')
       layout = [
         [sg.Text('-------- SELECIONAR voo ----------', font=("Helvica", 25))],
         [sg.Text('Digite o ID do voo que deseja selecionar:', font=("Helvica", 15))],
@@ -99,7 +99,7 @@ class TelaVoo(TelaAbstrata):
       return id
     
     def entrada(self,arg):
-      sg.ChangeLookAndFeel('DarkTeal4')
+      sg.ChangeLookAndFeel('DarkBlue')
       layout = [        
         [sg.Text(arg, font=("Helvica", 15))],
         [sg.InputText('', key='entrada')],

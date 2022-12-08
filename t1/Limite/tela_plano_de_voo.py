@@ -29,7 +29,7 @@ class TelaPlanoDeVoo(TelaAbstrata):
 
   def init_opcoes(self):
     # sg.theme_previewer()
-    sg.ChangeLookAndFeel('DarkTeal4')
+    sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- PLANOP DE VOO ----------', font=("Helvica", 25))],
       [sg.Text('Escolha sua opção', font=("Helvica", 15))],
@@ -46,7 +46,7 @@ class TelaPlanoDeVoo(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   # opção de tratamento: adicionar um if e só coletar nome e telefone se o button é 'Confirmar'
   def pega_dados_plano_de_voo(self):
-    sg.ChangeLookAndFeel('DarkTeal4')
+    sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- DADOS plano_de_voo ----------', font=("Helvica", 25))],
       [sg.Text('Codigo:', size=(15, 1)), sg.InputText('', key='codigo')],
@@ -96,7 +96,7 @@ class TelaPlanoDeVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_plano_de_voo(self):
-    sg.ChangeLookAndFeel('DarkTeal4')
+    sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- SELECIONAR plano_de_voo ----------', font=("Helvica", 25))],
       [sg.Text('Digite o CODIGO do plano_de_voo que deseja selecionar:', font=("Helvica", 15))],
