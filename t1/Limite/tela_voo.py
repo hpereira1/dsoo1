@@ -50,7 +50,7 @@ class TelaVoo(TelaAbstrata):
       layout = [
         [sg.Text('-------- DADOS voo ----------', font=("Helvica", 25))],
         [sg.Text('ID:', size=(15, 1)), sg.InputText('', key='id')],
-        [sg.Text('Data:', size=(15, 1)), sg.InputText('', key='data',disabled=True,disabled_readonly_background_color="black")],
+        [sg.Text('Data:', size=(15, 1)), sg.InputText('', key='data')],
       
         [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
       ]
