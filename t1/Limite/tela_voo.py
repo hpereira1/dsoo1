@@ -76,7 +76,7 @@ class TelaVoo(TelaAbstrata):
         str_todas_voos = str_todas_voos + "Plano de voo: " + str(dado["plano_de_voo"]) + '\n'
         str_todas_voos = str_todas_voos + "Passageiros do voo: " + str(dado["passageiros_voo"]) + '\n'
         str_todas_voos = str_todas_voos + "Tripulação do voo: " + str(dado["tripulantes_voo"]) + '\n\n'
-        str_todas_voos = str_todas_voos + "Distancia maxima: " + str(dado["distancia_maxima"]) + '\n'
+       
         
     
 

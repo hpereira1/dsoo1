@@ -50,12 +50,9 @@ class TelaPlanoDeVoo(TelaAbstrata):
     layout = [
       [sg.Text('-------- DADOS plano_de_voo ----------', font=("Helvica", 25))],
       [sg.Text('Codigo:', size=(15, 1)), sg.InputText('', key='codigo')],
-      [sg.Text('Modelo:', size=(15, 1)), sg.InputText('', key='modelo')],
-      [sg.Text('Combustível:', size=(15, 1)), sg.InputText('', key='combustivel')],
-      [sg.Text('Numero maximo passageiros:', size=(15, 1)), sg.InputText('', key='numero_max_passageiros')],
-      [sg.Text('Peso maximo decolagem:', size=(15, 1)), sg.InputText('', key='peso_max_decolagem')],
-      [sg.Text('Distancia maxima:', size=(15, 1)), sg.InputText('', key='distancia_maxima')],
-      [sg.Text('Numero minimo tripulantes:', size=(15, 1)), sg.InputText('', key='numero_min_tripulantes')],
+      [sg.Text('Distancia:', size=(15, 1)), sg.InputText('', key='distancia')],
+      [sg.Text('Peso:', size=(15, 1)), sg.InputText('', key='peso')],
+      
          
       [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
     ]
@@ -63,18 +60,14 @@ class TelaPlanoDeVoo(TelaAbstrata):
 
     button, values = self.open()
     codigo = values['codigo']
-    modelo = values['modelo']
-    combustivel = values['combustivel']
-    numero_max_passageiros = values['numero_max_passageiros']
-    peso_max_decolagem = values['peso_max_decolagem']
-    distancia_maxima = values['distancia_maxima']
-    numero_min_tripulantes = values["numero_min_tripulantes"]
+    distancia = values['distancia']
+    peso = values['peso']
+
     
     
 
     self.close()
-    return {"codigo": codigo, "modelo": modelo, "combustivel": combustivel, "numero_max_passageiros":numero_max_passageiros,
-            "peso_max_decolagem": peso_max_decolagem, "distancia_maxima": distancia_maxima, "numero_min_tripulantes":numero_min_tripulantes 
+    return {"codigo": codigo, "distancia": distancia, "peso": peso 
             
             }
 
@@ -82,14 +75,14 @@ class TelaPlanoDeVoo(TelaAbstrata):
   def mostra_plano_de_voo(self, dados_plano_de_voo):
     str_todas_plano_de_voos = ""
     for dado in dados_plano_de_voo:
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Codigo da plano_de_voo: " + str(dado["codigo"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Modelo da plano_de_voo: " + str(dado["modelo"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Combustivel da plano_de_voo: " + str(dado["combustivel"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Numero max. passageiros da plano_de_voo: " + str(dado["numero_max_passageiros"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Peso max. decolagem: " + str(dado["peso_max_decolagem"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Distancia maxima: " + str(dado["distancia_maxima"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Numero min. tripulantes: " + str(dado["numero_min_tripulantes"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Status: " + dado["status"] + '\n\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "ID do voo: " + str(dado["id_voo"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Código do plano_de_voo: " + str(dado["codigo"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Distancia do voo: " + str(dado["distancia"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Numero passageiros: " + str(dado["numero_passageiros"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Peso: " + str(dado["peso"]) + '\n\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Aeronave: " + str(dado["aeronave"]) + '\n'
+      
+     
    
 
     sg.Popup('-------- LISTA DE plano_de_vooS ----------', str_todas_plano_de_voos)
@@ -109,6 +102,21 @@ class TelaPlanoDeVoo(TelaAbstrata):
     codigo = values['codigo']
     self.close()
     return codigo
+  
+  def entrada(self,arg):
+    sg.ChangeLookAndFeel('DarkBlue')
+    layout = [        
+      [sg.Text(arg, font=("Helvica", 15))],
+      [sg.InputText('', key='entrada')],
+      [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
+      
+    ]
+    self.__window = sg.Window(arg).Layout(layout)
+          
+    button, values = self.open()
+    entrada = values['entrada']
+    self.close()
+    return entrada
 
   def mostra_mensagem(self, msg):
     sg.popup("", msg)

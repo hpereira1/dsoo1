@@ -45,7 +45,7 @@ class ControladorAeronaves():
       aeronave.peso_max_decolagem = novos_dados_aeronave["peso_max_decolagem"]
       aeronave.distancia_maxima = novos_dados_aeronave["distancia_maxima"]
       aeronave.numero_min_tripulantes = novos_dados_aeronave["numero_min_tripulantes"]
-      aeronave.status = novos_dados_aeronave["status"]
+      #aeronave.status = novos_dados_aeronave["status"]
     
       self.lista_aeronaves()
     else:
@@ -79,19 +79,15 @@ class ControladorAeronaves():
     try:
       if not self.__aeronaves:
         raise Exception
-      else:
-          
-        for aeronave in self.__aeronaves:
-                  
-            if (int(aeronave.distancia_maxima) >= int (distancia)) and (aeronave.status == "Livre"):            
-              self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, 
-                                                  "distancia_maxima":aeronave.distancia_maxima,
-                                                  "status":aeronave.status})
-        
-        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo)                  
-              
+      else:          
+        for aeronave in self.__aeronaves:                 
+          if (int(aeronave.distancia_maxima) >= int (distancia)) and (aeronave.status == "Livre"):            
+            self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, 
+                                                "distancia_maxima":aeronave.distancia_maxima,
+                                                "status":aeronave.status})        
+        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo)             
     except Exception:
-      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA\n")
+      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA2\n")
   
   # def lista_historico(self):
   #   aeronave2 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_aeronave.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))

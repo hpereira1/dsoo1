@@ -12,7 +12,7 @@ class TelaSistema(TelaAbstrata):
     def tela_opcoes(self):
         self.init_components()
         button, values = self.__window.Read()
-        opcao = 0
+        opcao = 0        
         if values['1']:
             opcao = 1
         if values['2']:
@@ -22,7 +22,7 @@ class TelaSistema(TelaAbstrata):
         # cobre os casos de voltar, não clicar em nada e fechar janela, ou clicar cancelar
         if values['0'] or button in (None,'Cancelar'):
             opcao = 0
-        self.close()
+        self.close()        
         return opcao
 
     def close(self):
@@ -39,6 +39,7 @@ class TelaSistema(TelaAbstrata):
             [sg.Radio('Passageiros',"RD1", key='3')],
             [sg.Radio('Finalizar sistema',"RD1", key='0')],
             [sg.Button('Confirmar'), sg.Cancel('Cancelar')],
+            
             
            
         ]

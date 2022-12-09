@@ -55,6 +55,7 @@ class TelaAeronave(TelaAbstrata):
       [sg.Text('Peso maximo decolagem:', size=(15, 1)), sg.InputText('', key='peso_max_decolagem')],
       [sg.Text('Distancia maxima:', size=(15, 1)), sg.InputText('', key='distancia_maxima')],
       [sg.Text('Numero minimo tripulantes:', size=(15, 1)), sg.InputText('', key='numero_min_tripulantes')],
+      #[sg.Text('Status:', size=(15, 1)), sg.InputText('', key='status')],
          
       [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
     ]
@@ -68,12 +69,14 @@ class TelaAeronave(TelaAbstrata):
     peso_max_decolagem = values['peso_max_decolagem']
     distancia_maxima = values['distancia_maxima']
     numero_min_tripulantes = values["numero_min_tripulantes"]
+    #status = values["status"]
     
     
 
     self.close()
     return {"codigo": codigo, "modelo": modelo, "combustivel": combustivel, "numero_max_passageiros":numero_max_passageiros,
-            "peso_max_decolagem": peso_max_decolagem, "distancia_maxima": distancia_maxima, "numero_min_tripulantes":numero_min_tripulantes 
+            "peso_max_decolagem": peso_max_decolagem, "distancia_maxima": distancia_maxima, "numero_min_tripulantes":numero_min_tripulantes,
+            #"status":status 
             
             }
 
