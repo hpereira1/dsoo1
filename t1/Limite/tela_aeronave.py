@@ -93,13 +93,15 @@ class TelaAeronave(TelaAbstrata):
       str_todas_aeronaves = str_todas_aeronaves + "Distancia maxima: " + str(dado["distancia_maxima"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Numero min. tripulantes: " + str(dado["numero_min_tripulantes"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Status: " + dado["status"] + '\n\n'  
+      
     
       #sg.Popup('-------- LISTA DE AERONAVES ----------', str_todas_aeronaves)
     col1=[[sg.Text(str_todas_aeronaves)]]
     #dado1 = str_todas_aeronaves
     #str_teste = str_teste + dados_aeronave[0].codigo()   
     layout = [     
-      [sg.Text(str_todas_aeronaves)]
+      [sg.Text(str_todas_aeronaves)],
+      [sg.Button("Teste")]
      
               
       #[sg.Column(col1,scrollable=True)]
@@ -107,7 +109,7 @@ class TelaAeronave(TelaAbstrata):
       
     ]
     self.__window = sg.Window('Lista aeronave').Layout(layout)
-    values = self.open()
+    button,values = self.open()
     
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado

@@ -69,18 +69,30 @@ class TelaVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def mostra_voo(self, dados_voo):
-      str_todas_voos = ""
+      str_todos_voos = ""
       for dado in dados_voo:
-        str_todas_voos = str_todas_voos + "ID do voo: " + str(dado["id"]) + '\n'
-        str_todas_voos = str_todas_voos + "Data do voo: " + str(dado["data"]) + '\n'
-        str_todas_voos = str_todas_voos + "Plano de voo: " + str(dado["plano_de_voo"]) + '\n'
-        str_todas_voos = str_todas_voos + "Passageiros do voo: " + str(dado["passageiros_voo"]) + '\n'
-        str_todas_voos = str_todas_voos + "Tripulação do voo: " + str(dado["tripulantes_voo"]) + '\n\n'
-       
+        str_todos_voos = str_todos_voos + "ID do voo: " + str(dado["id"]) + '\n'
+        str_todos_voos = str_todos_voos + "Data do voo: " + str(dado["data"]) + '\n'
+        str_todos_voos = str_todos_voos + "Plano de voo (codigo): " + str(dado["plano_de_voo"]) + '\n'
+        str_todos_voos = str_todos_voos + "Passageiros do voo: " + str(dado["passageiros_voo"]) + '\n'
+        str_todos_voos = str_todos_voos + "Tripulação do voo: " + str(dado["tripulantes_voo"]) + '\n\n' 
         
     
 
-      sg.Popup('-------- LISTA DE VOOS ----------', str_todas_voos)
+      #sg.Popup('-------- LISTA DE VOOS ----------', str_todos_voos)
+      layout = [     
+      [sg.Text(str_todos_voos)],
+      [sg.Button("Detalhes Plano de Voo")],
+      [sg.Button("Detalhes passageiros do voo")],
+      [sg.Button("Detalhes Tripulacao")],
+     
+              
+      #[sg.Column(col1,scrollable=True)]
+          
+      
+      ]
+      self.__window = sg.Window('Lista aeronave').Layout(layout)
+      button,values = self.open()
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def seleciona_voo(self):
