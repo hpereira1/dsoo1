@@ -71,12 +71,14 @@ class ControladorVoos:
 
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
   def lista_voos(self):
+    dados_voo = []
     try:
       if not self.__voos:
         raise Exception
       else:
         for voo in self.__voos:
-          self.__tela_voo.mostra_voo({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo, "passageiros_voo": voo.passageiros_voo, "tripulantes_voo": voo.tripulantes_voo})
+          dados_voo.append({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo, "passageiros_voo": voo.passageiros_voo, "tripulantes_voo": voo.tripulantes_voo})
+          self.__tela_voo.mostra_voo(dados_voo)
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     
@@ -95,7 +97,7 @@ class ControladorVoos:
       voo.tripulantes_voo.append(funcionario)
   
   def excluir_voo(self):
-    self.lista_voos()
+    self.lista_voos()    
     id_voo = self.__tela_voo.seleciona_voo()
     voo = self.pega_voo_por_id(id_voo)
 
