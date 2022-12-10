@@ -109,6 +109,21 @@ class TelaPassageiro(TelaAbstrata):
       id_passageiro = input("ID do passageiro que deseja selecionar: ")
       return id_passageiro
     '''
+    def seleciona_passageiro(self):
+      sg.ChangeLookAndFeel('DarkBlue')
+      layout = [
+        [sg.Text('-------- SELECIONAR passageiro ----------', font=("Helvica", 25))],
+        [sg.Text('Digite o ID do passageiro que deseja selecionar:', font=("Helvica", 15))],
+        [sg.Text('ID:', size=(15, 1)), sg.InputText('', key='id')],
+        [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
+      ]
+      self.__window = sg.Window('Seleciona passageiro').Layout(layout)
+
+      button, values = self.open()
+      id = values['id']
+      self.close()
+      return id
+    
     def entrada(self,arg):
       sg.ChangeLookAndFeel('DarkBlue')
       layout = [        
@@ -125,7 +140,7 @@ class TelaPassageiro(TelaAbstrata):
       return entrada  
     
     def mostra_mensagem(self, msg):
-      sg.open("", msg)
+      sg.popup("", msg)
     
     def close(self):
       self.__window.Close()

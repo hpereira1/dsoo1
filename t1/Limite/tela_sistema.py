@@ -19,6 +19,8 @@ class TelaSistema(TelaAbstrata):
             opcao = 2
         if values['3']:
             opcao = 3
+        if values['4']:
+            opcao = 4
         # cobre os casos de voltar, não clicar em nada e fechar janela, ou clicar cancelar
         if values['0'] or button in (None,'Cancelar'):
             opcao = 0
@@ -37,13 +39,14 @@ class TelaSistema(TelaAbstrata):
             [sg.Radio('Aeronaves',"RD1", key='1')],
             [sg.Radio('Voos',"RD1", key='2')],
             [sg.Radio('Passageiros',"RD1", key='3')],
+            [sg.Radio('Funcionarios',"RD1", key='4')],
             [sg.Radio('Finalizar sistema',"RD1", key='0')],
             [sg.Button('Confirmar'), sg.Cancel('Cancelar')],
             
             
            
         ]
-        self.__window = sg.Window('Sistema de livros').Layout(layout)
+        self.__window = sg.Window('Sistema de CiaAerea').Layout(layout)
         
     
     
