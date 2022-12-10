@@ -42,7 +42,7 @@ class TelaAeronave(TelaAbstrata):
       [sg.Radio('Listar aeronaves', "RD1", key='3')],
       [sg.Radio('Excluir aeronave', "RD1", key='4')],
       [sg.Radio('Retornar', "RD1", key='0')],
-      [sg.Button('Teste')],
+      #[sg.Button('Teste')],
       [sg.Button('Confirmar'), sg.Cancel('Cancelar')],
       
      
