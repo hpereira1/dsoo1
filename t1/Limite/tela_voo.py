@@ -82,9 +82,9 @@ class TelaVoo(TelaAbstrata):
       #sg.Popup('-------- LISTA DE VOOS ----------', str_todos_voos)
       layout = [     
       [sg.Text(str_todos_voos)],
-      [sg.Button("Detalhes Plano de Voo")],
+      [sg.Button("Teste")],
       [sg.Button("Detalhes passageiros do voo")],
-      [sg.Button("Detalhes Tripulacao")],
+      [sg.Button("Detalhes Tripulacao")]
      
               
       #[sg.Column(col1,scrollable=True)]
@@ -93,6 +93,13 @@ class TelaVoo(TelaAbstrata):
       ]
       self.__window = sg.Window('Lista aeronave').Layout(layout)
       button,values = self.open()
+      
+    def detalhes(self):
+      button = self.open()
+      if button in (None,'Teste'):
+        return self.__entrada("Deu certp")       
+          
+      
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def seleciona_voo(self):

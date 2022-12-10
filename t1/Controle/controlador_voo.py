@@ -78,7 +78,8 @@ class ControladorVoos:
       else:
         for voo in self.__voos:
           dados_voo.append({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo.codigo, "passageiros_voo": voo.passageiros_voo, "tripulantes_voo": voo.tripulantes_voo})
-          self.__tela_voo.mostra_voo(dados_voo)
+          self.__tela_voo.mostra_voo(dados_voo)          
+          self.__tela_voo.detalhes()
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     

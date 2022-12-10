@@ -94,8 +94,7 @@ class ControladorAeronaves():
   #   for i in aeronave2.historico_de_voos[i]:
   #     self.__tela_aeronave.mostra_mensagem(i)
        
-                 
-               
+  
         
 
   def excluir_aeronave(self):

@@ -2,15 +2,16 @@ from Limite.tela_abstrata import TelaAbstrata
 import PySimpleGUI as sg
 
 
+
 class TelaAeronave(TelaAbstrata):
   def __init__(self):
     super().__init__()
     self.__window = None
     self.init_opcoes()
   
-  def tela_opcoes(self):
-    self.init_opcoes()
-    button, values = self.open()
+  def tela_opcoes(self):    
+    self.init_opcoes()    
+    button, values = self.open()   
     if values['1']:
       opcao = 1
     if values['2']:
@@ -23,8 +24,12 @@ class TelaAeronave(TelaAbstrata):
     #Isso faz com que retornemos a tela do sistema caso qualquer uma dessas coisas aconteca
     if values['0'] or button in (None, 'Cancelar'):
       opcao = 0
+   
     self.close()
     return opcao
+  
+    
+  
 
   def init_opcoes(self):
     # sg.theme_previewer()
@@ -37,7 +42,9 @@ class TelaAeronave(TelaAbstrata):
       [sg.Radio('Listar aeronaves', "RD1", key='3')],
       [sg.Radio('Excluir aeronave', "RD1", key='4')],
       [sg.Radio('Retornar', "RD1", key='0')],
+      [sg.Button('Teste')],
       [sg.Button('Confirmar'), sg.Cancel('Cancelar')],
+      
      
     ]
     self.__window = sg.Window('Sistema cia. aerea').Layout(layout)
@@ -100,8 +107,8 @@ class TelaAeronave(TelaAbstrata):
     #dado1 = str_todas_aeronaves
     #str_teste = str_teste + dados_aeronave[0].codigo()   
     layout = [     
-      [sg.Text(str_todas_aeronaves)],
-      [sg.Button("Teste")]
+      [sg.Text(str_todas_aeronaves)]
+      
      
               
       #[sg.Column(col1,scrollable=True)]
@@ -109,7 +116,10 @@ class TelaAeronave(TelaAbstrata):
       
     ]
     self.__window = sg.Window('Lista aeronave').Layout(layout)
-    button,values = self.open()
+    event,values = self.open()
+    
+   
+      
     
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
