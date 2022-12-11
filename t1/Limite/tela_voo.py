@@ -81,29 +81,31 @@ class TelaVoo(TelaAbstrata):
       
       col1=[[sg.Text(str_todos_voos)]]
       #sg.Popup('-------- LISTA DE VOOS ----------', str_todos_voos)
-      layout2 = [[
+      layout = [
        
       [sg.Text("LISTA DE VOOS")],                  
        
             
-      [sg.Column(col1,size=(400,400),scrollable=True)],       
-      [sg.Text(str_todos_voos)],
-      [sg.Button("Teste")],
-      [sg.Button("Detalhes passageiros do voo")],
-      [sg.Button("Detalhes Tripulacao")],
-      
-              
-      
+      [sg.Column(col1,size=(400,400),scrollable=True)],    
+      [sg.Button("Detalhes Plano de Voo")],
+      [sg.Button("Detalhes Passageiros do voo")],
+      #[sg.Button("Detalhes Tripulacao")],     
           
       
-      ]]
-      self.__window = sg.Window('Lista voo',size=(400,400)).Layout(layout2)
+      ]
+      self.__window = sg.Window('Lista voo',size=(400,700)).Layout(layout)
       button,values = self.open()
+      if button in (None,"Detalhes Plano de Voo"):
+        arg = 1
+        self.close()
+        return arg, dado["plano_de_voo"]
+      elif button in (None,"Detalhes Passageiros do voo"):
+        arg = 2
+        self.close()
+        return arg, None
       
-    def detalhes(self):
-      button = self.open()
-      if button in (None,'Teste'):
-        return self.__entrada("Deu certp")       
+      
+      
           
       
 

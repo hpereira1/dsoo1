@@ -36,7 +36,7 @@ class ControladorPlanosDeVoo():
                 voo = self.__controlador_sistema.controlador_voo.pega_voo_por_id(id_voo)
                 voo.plano_de_voo = plano_de_voo
                 
-                self.__tela_plano_de_voo.mostra_mensagem("\nAERONAVES\n")
+                #self.__tela_plano_de_voo.mostra_mensagem("\nAERONAVES\n")
               
                 self.__controlador_sistema.controlador_aeronaves.seleciona_aeronave(plano_de_voo.distancia, plano_de_voo.codigo, id_voo)
                              
@@ -45,9 +45,9 @@ class ControladorPlanosDeVoo():
         except KeyError:
             self.__tela_plano_de_voo.mostra_mensagem("Plano de voo já existente!")
     
-    def inclui_aeronave_plano(self,codigo:str,id_voo:str):
-      
-        aeronave1 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))        
+    def inclui_aeronave_plano(self,codigo:str,id_voo:str,aeronave_codigo):
+        aeronave1 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(aeronave_codigo)
+        #aeronave1 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_plano_de_voo.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))        
         aeronave1.status = "Ocupada"
         plano1 = self.__controlador_sistema.controlador_planos_de_voo.pega_plano_de_voo_por_codigo(codigo)        
         plano1.aeronave = aeronave1
@@ -77,18 +77,33 @@ class ControladorPlanosDeVoo():
             self.__tela_plano_de_voo.mostra_mensagem("NENHUM PLANO DE VOO ENCONTRADO")
 
   # # Sugestão: se a lista estiver vazia, mostrar a mensagem de lista vazia
-    def lista_planos_de_voos(self):        
+    def lista_planos_de_voos(self):
+        dados_plano_de_voo = []        
         try:
             if not self.__planos_de_voo:
                 raise Exception
             else:
                 for plano_de_voo in self.__planos_de_voo:
-                    self.__tela_plano_de_voo.mostra_plano_de_voo({"id_voo": plano_de_voo.id_voo, "codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
-                                                            "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,"aeronave":plano_de_voo.aeronave                                                            
+                    dados_plano_de_voo.append({"id_voo": plano_de_voo.id_voo, "codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
+                                                            "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,
+                                                            "aeronave":plano_de_voo.aeronave
+                                                           # "aeronave2":plano_de_voo.aeronave.codigo,                                                            
                                                         })     
-                #self.__seleciona_aeronave()               
+                    self.__tela_plano_de_voo.mostra_plano_de_voo(dados_plano_de_voo)
+                             
         except Exception:
             self.__tela_plano_de_voo.mostra_mensagem("\nNENHUM PLANO DE VOO ENCONTRADO!\n")
+    
+    def lista_plano2(self,plano_de_voo):
+        dados_plano_de_voo = []
+        dados_plano_de_voo.append({"id_voo": plano_de_voo.id_voo, "codigo": plano_de_voo.codigo, "distancia": plano_de_voo.distancia,
+                                                            "numero_passageiros":plano_de_voo.numero_passageiros,"peso":plano_de_voo.peso,
+                                                            "aeronave":plano_de_voo.aeronave.modelo,
+                                                            "aeronave2":plano_de_voo.aeronave.codigo,                                                            
+                                                        })                                  
+        self.__tela_plano_de_voo.mostra_plano_de_voo(dados_plano_de_voo)     
+                             
+        
             
 
 

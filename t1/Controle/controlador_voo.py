@@ -1,6 +1,7 @@
    
 from Limite.tela_voo import TelaVoo
 from Entidade.voo import Voo
+from Entidade.passageiro import Passageiro
 
 class ControladorVoos:
 
@@ -79,8 +80,22 @@ class ControladorVoos:
       else:
         for voo in self.__voos:
           dados_voo.append({"id": voo.id, "data": voo.data, "plano_de_voo": voo.plano_de_voo.codigo, "passageiros_voo": voo.passageiros_voo, "tripulantes_voo": voo.tripulantes_voo})
-          self.__tela_voo.mostra_voo(dados_voo)          
-          self.__tela_voo.detalhes()
+          x,y = self.__tela_voo.mostra_voo(dados_voo)
+          if x == 1:
+            plano = self.__controlador_sistema.controlador_planos_de_voo.pega_plano_de_voo_por_codigo(y)
+            self.__controlador_sistema.controlador_planos_de_voo.lista_plano2(plano)
+            #self.__controlador_sistema.controlador_planos_de_voo.lista_planos_de_voos()
+          elif x == 2:
+            self.__tela_voo.mostra_mensagem(self.__passageiros)
+            # str = ""
+            # for passageiro in self.__passageiros:
+            #   if isinstance(passageiro,Passageiro):
+            #     str = str + str(passageiro.nome) + "\n"
+            #     self.__tela_voo.mostra_mensagem(str)
+            
+            
+                        
+          
     except Exception:
       self.__tela_voo.mostra_mensagem("\nNENHUM  VOO ENCONTRADO!\n")
     

@@ -76,16 +76,17 @@ class TelaPlanoDeVoo(TelaAbstrata):
     str_todas_plano_de_voos = ""
     for dado in dados_plano_de_voo:
       str_todas_plano_de_voos = str_todas_plano_de_voos + "ID do voo: " + str(dado["id_voo"]) + '\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Código do plano_de_voo: " + str(dado["codigo"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Código do Plano de Voo: " + str(dado["codigo"]) + '\n'
       str_todas_plano_de_voos = str_todas_plano_de_voos + "Distancia do voo: " + str(dado["distancia"]) + '\n'
       str_todas_plano_de_voos = str_todas_plano_de_voos + "Numero passageiros: " + str(dado["numero_passageiros"]) + '\n'
       str_todas_plano_de_voos = str_todas_plano_de_voos + "Peso: " + str(dado["peso"]) + '\n\n'
-      str_todas_plano_de_voos = str_todas_plano_de_voos + "Aeronave: " + str(dado["aeronave"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Aeronave(modelo): " + str(dado["aeronave"]) + '\n'
+      str_todas_plano_de_voos = str_todas_plano_de_voos + "Aeronave(codigo): " + str(dado["aeronave2"]) + '\n'
       
      
    
 
-    sg.Popup('-------- LISTA DE plano_de_vooS ----------', str_todas_plano_de_voos)
+    sg.Popup('-------- DETALHES DO PLANOS DE VOO ----------', str_todas_plano_de_voos)
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def seleciona_plano_de_voo(self):

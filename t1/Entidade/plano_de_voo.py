@@ -33,9 +33,7 @@ class PlanoDeVoo():
         return self.__aeronave
     
     ##Adicionar ao diagrama
-    @id_voo.setter
-    def id(self,id_voo):
-        self.__id = id_voo
+   
     @id_voo.setter
     def id_voo(self,id_voo):
         self.__id_voo = id_voo

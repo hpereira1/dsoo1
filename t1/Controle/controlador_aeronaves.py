@@ -71,7 +71,7 @@ class ControladorAeronaves():
                                              })
           
           #self.__tela_aeronave.mostra_aeronave(dados_aeronave)
-        self.__tela_aeronave.mostra_aeronave(dados_aeronave)  
+        self.__tela_aeronave.mostra_aeronave(dados_aeronave,False)  
           # self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo,
           #                                       "distancia_maxima":aeronave.distancia_maxima,
           #                                     "status":aeronave.status
@@ -95,11 +95,11 @@ class ControladorAeronaves():
                                               "numero_min_tripulantes": aeronave.numero_min_tripulantes,                                                                                           
                                               "status":aeronave.status
                                              })
-        self.__tela_aeronave.mostra_aeronave(dados_aeronave) 
+        aeronave_codigo = self.__tela_aeronave.mostra_aeronave(dados_aeronave,True) 
             # self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, 
             #                                     "distancia_maxima":aeronave.distancia_maxima,
             #                                     "status":aeronave.status})        
-        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo)             
+        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo,aeronave_codigo)             
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA2\n")
   

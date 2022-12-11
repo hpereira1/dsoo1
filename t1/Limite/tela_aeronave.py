@@ -88,7 +88,7 @@ class TelaAeronave(TelaAbstrata):
             }
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
-  def mostra_aeronave(self, dados_aeronave):
+  def mostra_aeronave(self, dados_aeronave,visibility = False):
     str_todas_aeronaves = ""
     
     for dado in dados_aeronave:      
@@ -106,24 +106,33 @@ class TelaAeronave(TelaAbstrata):
     
       #sg.Popup('-------- LISTA DE AERONAVES ----------', str_todas_aeronaves)
     col1=[[sg.Text(str_todas_aeronaves)]]
-    #dado1 = str_todas_aeronaves
-    #str_teste = str_teste + dados_aeronave[0].codigo()
-    #str = lista_aeronaves[0]    
-    layout = [     
-      [sg.Text("LISTA DE AERONAVES")],
-                   
-       
-            
-      [sg.Column(col1,size=(400,400),scrollable=True)],
+    col2=[[sg.Text("DIGITE O CODIGO DE UMA AERONAVE")],[sg.InputText('', key='codigo'), sg.Button('Ok')]]
+    if visibility == False:  
       
+      layout = [     
+        [sg.Text("LISTA DE AERONAVES")],      
+              
+        [sg.Column(col1,size=(400,400),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+        
+        [sg.Column(col2,size=(400,70),scrollable=False,vertical_alignment='bottom',visible=False)],              
       
+      ]
+    else:
+      layout = [     
+        [sg.Text("LISTA DE AERONAVES")],      
+              
+        [sg.Column(col1,size=(400,400),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+        
+        [sg.Column(col2,size=(400,70),scrollable=False,vertical_alignment='bottom',visible=True)],              
       
+      ]
+    self.__window = sg.Window('Lista aeronave',size=(400,500)).Layout(layout)
+    button,values = self.open()
+    if button in (None,"Ok"):
+      x = values["codigo"]
+      self.close()
+    return x
       
-          
-      
-    ]
-    self.__window = sg.Window('Lista aeronave',size=(400,400)).Layout(layout)
-    event,values = self.open()
     
    
       
