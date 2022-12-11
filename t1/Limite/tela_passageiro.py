@@ -134,10 +134,14 @@ class TelaPassageiro(TelaAbstrata):
       ]
       self.__window = sg.Window(arg).Layout(layout)
             
-      button, values = self.open()
+      button, values = self.open()    
+      
       entrada = values['entrada']
       self.close()
-      return entrada  
+      return entrada
+    
+    
+      
     
     def mostra_mensagem(self, msg):
       sg.popup("", msg)

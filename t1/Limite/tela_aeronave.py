@@ -55,13 +55,13 @@ class TelaAeronave(TelaAbstrata):
     sg.ChangeLookAndFeel('DarkBlue')
     layout = [
       [sg.Text('-------- DADOS aeronave ----------', font=("Helvica", 25))],
-      [sg.Text('Codigo:', size=(15, 1)), sg.InputText('', key='codigo')],
-      [sg.Text('Modelo:', size=(15, 1)), sg.InputText('', key='modelo')],
-      [sg.Text('Combustível:', size=(15, 1)), sg.InputText('', key='combustivel')],
-      [sg.Text('Numero maximo passageiros:', size=(15, 1)), sg.InputText('', key='numero_max_passageiros')],
-      [sg.Text('Peso maximo decolagem:', size=(15, 1)), sg.InputText('', key='peso_max_decolagem')],
-      [sg.Text('Distancia maxima:', size=(15, 1)), sg.InputText('', key='distancia_maxima')],
-      [sg.Text('Numero minimo tripulantes:', size=(15, 1)), sg.InputText('', key='numero_min_tripulantes')],
+      [sg.Text('Codigo:', size=(25, 1)), sg.InputText('', key='codigo')],
+      [sg.Text('Modelo:', size=(25, 1)), sg.InputText('', key='modelo')],
+      [sg.Text('Combustível:', size=(25, 1)), sg.InputText('', key='combustivel')],
+      [sg.Text('Numero maximo passageiros:', size=(25, 1)), sg.InputText('', key='numero_max_passageiros')],
+      [sg.Text('Peso maximo decolagem:', size=(25, 1)), sg.InputText('', key='peso_max_decolagem')],
+      [sg.Text('Distancia maxima:', size=(25, 1)), sg.InputText('', key='distancia_maxima')],
+      [sg.Text('Numero minimo tripulantes:', size=(25, 1)), sg.InputText('', key='numero_min_tripulantes')],
       #[sg.Text('Status:', size=(15, 1)), sg.InputText('', key='status')],
          
       [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
@@ -90,8 +90,9 @@ class TelaAeronave(TelaAbstrata):
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
   def mostra_aeronave(self, dados_aeronave):
     str_todas_aeronaves = ""
-    #str_teste = ""
-    for dado in dados_aeronave:
+    
+    for dado in dados_aeronave:      
+      #str_todas_aeronaves = str_todas_aeronaves + str(dado["codigo"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Codigo da aeronave: " + str(dado["codigo"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Modelo da aeronave: " + str(dado["modelo"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Combustivel da aeronave: " + str(dado["combustivel"]) + '\n'
@@ -99,23 +100,29 @@ class TelaAeronave(TelaAbstrata):
       str_todas_aeronaves = str_todas_aeronaves + "Peso max. decolagem: " + str(dado["peso_max_decolagem"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Distancia maxima: " + str(dado["distancia_maxima"]) + '\n'
       str_todas_aeronaves = str_todas_aeronaves + "Numero min. tripulantes: " + str(dado["numero_min_tripulantes"]) + '\n'
-      str_todas_aeronaves = str_todas_aeronaves + "Status: " + dado["status"] + '\n\n'  
+      str_todas_aeronaves = str_todas_aeronaves + "Status: " + dado["status"] + '\n\n'
+      #lista_aeronaves.append(str_todas_aeronaves)  
       
     
       #sg.Popup('-------- LISTA DE AERONAVES ----------', str_todas_aeronaves)
     col1=[[sg.Text(str_todas_aeronaves)]]
     #dado1 = str_todas_aeronaves
-    #str_teste = str_teste + dados_aeronave[0].codigo()   
+    #str_teste = str_teste + dados_aeronave[0].codigo()
+    #str = lista_aeronaves[0]    
     layout = [     
-      [sg.Text(str_todas_aeronaves)]
+      [sg.Text("LISTA DE AERONAVES")],
+                   
+       
+            
+      [sg.Column(col1,size=(400,400),scrollable=True)],
       
-     
-              
-      #[sg.Column(col1,scrollable=True)]
+      
+      
+      
           
       
     ]
-    self.__window = sg.Window('Lista aeronave').Layout(layout)
+    self.__window = sg.Window('Lista aeronave',size=(400,400)).Layout(layout)
     event,values = self.open()
     
    
