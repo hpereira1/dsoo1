@@ -80,15 +80,25 @@ class ControladorAeronaves():
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")   
       
   def seleciona_aeronave(self,distancia:str,codigo:str,id_voo:str):
+    dados_aeronave =[]
     try:
       if not self.__aeronaves:
         raise Exception
       else:          
         for aeronave in self.__aeronaves:                 
           if (int(aeronave.distancia_maxima) >= int (distancia)) and (aeronave.status == "Livre"):            
-            self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, 
-                                                "distancia_maxima":aeronave.distancia_maxima,
-                                                "status":aeronave.status})        
+            dados_aeronave.append({"codigo": aeronave.codigo, "modelo":aeronave.modelo,
+                                 "combustivel": aeronave.combustivel,                                                
+                                              "numero_max_passageiros": aeronave.numero_max_passageiros,
+                                              "peso_max_decolagem": aeronave.peso_max_decolagem,
+                                              "distancia_maxima":aeronave.distancia_maxima,
+                                              "numero_min_tripulantes": aeronave.numero_min_tripulantes,                                                                                           
+                                              "status":aeronave.status
+                                             })
+        self.__tela_aeronave.mostra_aeronave(dados_aeronave) 
+            # self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, 
+            #                                     "distancia_maxima":aeronave.distancia_maxima,
+            #                                     "status":aeronave.status})        
         self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo)             
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA2\n")
