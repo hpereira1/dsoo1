@@ -87,11 +87,11 @@ class ControladorVoos:
             #self.__controlador_sistema.controlador_planos_de_voo.lista_planos_de_voos()
           elif x == 2:
             self.__tela_voo.mostra_mensagem(self.__passageiros)
-            # str = ""
+            # string1 = ""
             # for passageiro in self.__passageiros:
-            #   if isinstance(passageiro,Passageiro):
-            #     str = str + str(passageiro.nome) + "\n"
-            #     self.__tela_voo.mostra_mensagem(str)
+            #   #if isinstance(passageiro,Passageiro):
+            #     string1 = string1 + str(passageiro) + "\n"
+            #     self.__tela_voo.mostra_mensagem(string1)
             
             
                         
