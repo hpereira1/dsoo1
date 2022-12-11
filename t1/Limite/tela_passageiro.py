@@ -101,7 +101,8 @@ class TelaPassageiro(TelaAbstrata):
         
     
 
-      sg.Popup('-------- LISTA DE Passageiros ----------', str_todas_passageiros)
+      #sg.Popup('-------- LISTA DE Passageiros ----------', str_todas_passageiros)
+    
     
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     '''
