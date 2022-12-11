@@ -93,7 +93,7 @@ class TelaVoo(TelaAbstrata):
           
       
       ]
-      self.__window = sg.Window('Lista voo',size=(400,700)).Layout(layout)
+      self.__window = sg.Window('Lista voo',size=(400,550)).Layout(layout)
       button,values = self.open()
       if button in (None,"Detalhes Plano de Voo"):
         arg = 1
