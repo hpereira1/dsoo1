@@ -1,10 +1,12 @@
 from Limite.tela_passageiro import TelaPassageiro
 from Entidade.passageiro import Passageiro
+from DAOs.passageiro_dao import PassageiroDAO
 
 
 class ControladorPassageiros:
     def __init__(self, controlador_sistema):
-        self.__passageiros = [Passageiro("henrique", "0", "ik"),Passageiro("Eduardo","1","edu")]
+        # self.__passageiros = []
+        self.__passageiro_DAO = PassageiroDAO()
         self.__tela_passageiro = TelaPassageiro()
         self.__controlador_sistema = controlador_sistema
         
@@ -23,7 +25,7 @@ class ControladorPassageiros:
 
     
     def pega_passageiro_por_id(self, id):
-        for passageiro in self.__passageiros:
+        for passageiro in self.__passageiro_DAO.get_all():
             if(passageiro.id == id):
                 return passageiro
         return None
@@ -35,7 +37,8 @@ class ControladorPassageiros:
         try:
             if passageiro == None:
                 passageiro = Passageiro(dados_passageiro["nome"], dados_passageiro["id"],dados_passageiro["email"])
-                self.__passageiros.append(passageiro)
+                # self.__passageiros.append(passageiro)
+                self.__passageiro_DAO.add(passageiro)
                 self.lista_passageiros()
             else:
                 raise KeyError
@@ -48,7 +51,8 @@ class ControladorPassageiros:
         passageiro = self.pega_passageiro_por_id(id_passageiro)
         try:
             if (passageiro is not None):
-                self.__passageiros.remove(passageiro)
+                # self.__passageiros.remove(passageiro)
+                self.__passageiro_DAO.remove(passageiro.id)
                 self.lista_passageiros()
             else:
                 raise Exception
@@ -65,6 +69,7 @@ class ControladorPassageiros:
                 passageiro.nome = novos_dados_passageiro["nome"]
                 passageiro.id = novos_dados_passageiro["id"]
                 passageiro.email = novos_dados_passageiro["email"]
+                self.__passageiro_DAO.update(passageiro)
                 self.lista_passageiros()
             else:
                 raise Exception
@@ -73,10 +78,10 @@ class ControladorPassageiros:
     
     def lista_passageiros(self):
         try:
-            if not self.__passageiros:
+            if not self.__passageiro_DAO.get_all():
                 raise Exception
             else:        
-                for passageiro in self.__passageiros:
+                for passageiro in self.__passageiro_DAO.get_all():
                     self.__tela_passageiro.mostra_mensagem({"nome": passageiro.nome, "id": passageiro.id})
         except Exception:
             self.__tela_passageiro.mostra_mensagem("\nNENHUM PASSAGEIRO ENCONTRADO!\n")             
