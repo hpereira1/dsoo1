@@ -5,7 +5,7 @@ import PySimpleGUI as sg
 class TelaVoo(TelaAbstrata):
     def __init__(self):
       super().__init__()
-      self.__window = None
+      self.__window = None     
       self.init_opcoes()
   
     def tela_opcoes(self):
@@ -69,6 +69,7 @@ class TelaVoo(TelaAbstrata):
 
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     def mostra_voo(self, dados_voo):
+      
       str_todos_voos = ""
       for dado in dados_voo:
         str_todos_voos = str_todos_voos + "ID do voo: " + str(dado["id"]) + '\n'
@@ -77,10 +78,10 @@ class TelaVoo(TelaAbstrata):
         str_todos_voos = str_todos_voos + "Passageiros do voo: " + str(dado["passageiros_voo"]) + '\n'
         str_todos_voos = str_todos_voos + "Tripulação do voo: " + str(dado["tripulantes_voo"]) + '\n\n' 
         
-    
+      
       col1=[[sg.Text(str_todos_voos)]]
       #sg.Popup('-------- LISTA DE VOOS ----------', str_todos_voos)
-      layout = [
+      layout2 = [[
        
       [sg.Text("LISTA DE VOOS")],                  
        
@@ -92,11 +93,11 @@ class TelaVoo(TelaAbstrata):
       [sg.Button("Detalhes Tripulacao")],
       
               
-      [sg.Column(col1,scrollable=True)]
+      
           
       
-      ]
-      self.__window = sg.Window('Lista voo',size=(400,400)).Layout(layout)
+      ]]
+      self.__window = sg.Window('Lista voo',size=(400,400)).Layout(layout2)
       button,values = self.open()
       
     def detalhes(self):
