@@ -127,7 +127,7 @@ class TelaAeronave(TelaAbstrata):
       
       ]
     self.__window = sg.Window('Lista aeronave',size=(400,530)).Layout(layout)
-    event, button,values = self.open()
+    button,values = self.open()
     if button in (None,"Ok"):
       x = values["codigo"]
       self.close()
