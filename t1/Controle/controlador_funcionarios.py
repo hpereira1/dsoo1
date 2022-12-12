@@ -10,7 +10,7 @@ class ControladorFuncionarios:
         self.__cargo_DAO = CargoDAO()
         self.__tela_funcionario = TelaFuncionario()
         self.__controlador_sistema = controlador_sistema
-        self.__cargos = [Cargo("PILOTO", "0", 10000), Cargo("COMISSARIO", "1" , 3000)]
+        #self.__cargos = [Cargo("PILOTO", "0", 10000), Cargo("COMISSARIO", "1" , 3000)]
         
     def iniciar(self):
         self.abre_tela()
