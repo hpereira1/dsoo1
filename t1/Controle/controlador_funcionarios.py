@@ -96,7 +96,7 @@ class ControladorFuncionarios:
                 for funcionario in self.__funcionarios:
                     dados_funcionario.append({"nome": funcionario.nome, "id": funcionario.id, "cargo": funcionario.cargo,
                                             "email": funcionario.email})           
-                    x = self.__tela_passageiro.mostra_funcionario(dados_funcionario,True)
+                    x = self.__tela_funcionario.mostra_funcionario(dados_funcionario,True)
                     return x
         except Exception:
             self.__tela_funcionario.mostra_mensagem("\nNENHUM funcionario ENCONTRADO!\n")
