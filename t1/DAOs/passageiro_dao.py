@@ -14,10 +14,10 @@ class PassageiroDAO(DAO):
         if((passageiro is not None) and isinstance(passageiro, Passageiro) and isinstance(passageiro.id, str)):
             super().update(passageiro.id, passageiro)
 
-    def get(self, key:int):
-        if isinstance(key, int):
+    def get(self, key:str):
+        if isinstance(key, str):
             return super().get(key)
 
-    def remove(selfself, key:int):
-        if(isinstance(key, int)):
+    def remove(self, key:str):
+        if(isinstance(key, str)):
             return super().remove(key)

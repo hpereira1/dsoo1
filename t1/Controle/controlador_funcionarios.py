@@ -1,10 +1,13 @@
 from Limite.tela_funcionario import TelaFuncionario
 from Entidade.funcionario import Funcionario
 from Entidade.cargo import Cargo
-
+from DAOs.cargo_dao import CargoDAO
+from DAOs.funcionario_dao import FuncionarioDAO
 class ControladorFuncionarios:
     def __init__(self, controlador_sistema):
-        self.__funcionarios = []
+        #self.__funcionarios = []
+        self.__funcionario_DAO = FuncionarioDAO()
+        self.__cargo_DAO = CargoDAO()
         self.__tela_funcionario = TelaFuncionario()
         self.__controlador_sistema = controlador_sistema
         self.__cargos = [Cargo("PILOTO", "0", 10000), Cargo("COMISSARIO", "1" , 3000)]
@@ -17,13 +20,13 @@ class ControladorFuncionarios:
 
     
     def pega_cargo_por_id(self, id: str):
-        for cargo in self.__cargos:
+        for cargo in self.__cargo_DAO.get_all():
             if(cargo.id == id):
                 return cargo
         return None
     
     def pega_funcionario_por_id(self, id: str):
-        for funcionario in self.__funcionarios:
+        for funcionario in self.__funcionario_DAO.get_all():
             if(funcionario.id == id):
                 return funcionario
         return None
@@ -37,7 +40,8 @@ class ControladorFuncionarios:
                 self.lista_cargos()
                 dados_funcionario["cargo"] = self.__tela_funcionario.seleciona_cargo()
                 funcionario = Funcionario(dados_funcionario["nome"], dados_funcionario["id"],dados_funcionario["email"], dados_funcionario["cargo"])
-                self.__funcionarios.append(funcionario)
+                # self.__funcionarios.append(funcionario)
+                self.__funcionario_DAO.add(funcionario)
                 self.lista_funcionarios()
             else:
                 raise KeyError
@@ -50,7 +54,8 @@ class ControladorFuncionarios:
         funcionario = self.pega_funcionario_por_id(id_funcionario)
         try:
             if (funcionario is not None):
-                self.__funcionarios.remove(funcionario)
+                # self.__funcionarios.remove(funcionario)
+                self.__funcionario_DAO.remove(funcionario.id)
                 self.lista_funcionarios()
             else:
                 raise Exception
@@ -70,6 +75,7 @@ class ControladorFuncionarios:
                 self.lista_cargos()
                 id_cargo = self.__tela_funcionario.seleciona_cargo()
                 funcionario.cargo = self.pega_cargo_por_id(id_cargo)
+                self.__funcionario_DAO.update(funcionario)
                 self.lista_funcionarios()
             else:
                 raise Exception
@@ -78,10 +84,10 @@ class ControladorFuncionarios:
     
     def lista_funcionarios(self):
         try:
-            if not self.__funcionarios:
+            if not self.__funcionario_DAO.get_all():
                 raise Exception
             else:        
-                for funcionario in self.__funcionarios:
+                for funcionario in self.__funcionario_DAO.get_all():
                     self.__tela_funcionario.mostra_mensagem({"nome": funcionario.nome, "id": funcionario.id, "cargo": funcionario.cargo,
                                                              "email": funcionario.email})
         except Exception:
@@ -90,10 +96,10 @@ class ControladorFuncionarios:
     def lista_funcionarios2(self):
         dados_funcionario = []
         try:
-            if not self.__funcionarios:
+            if not self.__funcionario_DAO.get_all():
                 raise Exception                
             else:             
-                for funcionario in self.__funcionarios:
+                for funcionario in self.__funcionario_DAO.get_all():
                     dados_funcionario.append({"nome": funcionario.nome, "id": funcionario.id, "cargo": funcionario.cargo,
                                             "email": funcionario.email})           
                     x = self.__tela_funcionario.mostra_funcionario(dados_funcionario,True)
@@ -109,10 +115,10 @@ class ControladorFuncionarios:
     
     def lista_cargos(self):
         try:
-            if not self.__cargos:
+            if not self.__cargo_DAO.get_all():
                 raise Exception
             else:        
-                for cargo in self.__cargos:
+                for cargo in self.__cargo_DAO.get_all():
                     self.__tela_funcionario.mostra_mensagem({"descricao": cargo.descricao, "id": cargo.id, "salario": cargo.salario})
         except Exception:
             self.__tela_funcionario.mostra_mensagem("\nNENHUM cargo ENCONTRADO!\n")             
@@ -129,7 +135,8 @@ class ControladorFuncionarios:
         try:
             if cargo == None:
                 cargo = Cargo(dados_cargo["descricao"], dados_cargo["id"],dados_cargo["salario"])
-                self.__cargos.append(cargo)
+                # self.__cargos.append(cargo)
+                self.__cargo_DAO.add(cargo)
                 self.lista_cargos()
             else:
                 raise KeyError
@@ -146,6 +153,7 @@ class ControladorFuncionarios:
                 cargo.descricao = novos_dados_cargo["descricao"]
                 cargo.id = novos_dados_cargo["id"]
                 cargo.salario = novos_dados_cargo["salario"]
+                self.__cargo_DAO.update(cargo)
                 self.lista_cargos()
             else:
                 raise Exception
@@ -158,7 +166,7 @@ class ControladorFuncionarios:
         cargo = self.pega_cargo_por_id(id_cargo)
         try:
             if (cargo is not None):
-                self.__cargos.remove(cargo)
+                self.__cargo_DAO.remove(cargo.id)
                 self.lista_cargos()
             else:
                 raise Exception
