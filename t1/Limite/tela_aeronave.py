@@ -132,6 +132,8 @@ class TelaAeronave(TelaAbstrata):
       x = values["codigo"]
       self.close()
       return x
+    else:
+      return 0
     
           
     

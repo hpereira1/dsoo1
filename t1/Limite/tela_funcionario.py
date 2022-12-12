@@ -149,18 +149,47 @@ class TelaFuncionario(TelaAbstrata):
       print("EMAIL DO funcionario: ", dados_funcionario["email"])
       print("\n")
     '''
-    def mostra_funcionario(self, dados_funcionario):
-      str_todas_funcionarios = ""
+    def mostra_funcionario(self, dados_funcionario,visibility=False):
+      str_todos_funcionarios = ""
       for dado in dados_funcionario:
-        str_todas_funcionarios = str_todas_funcionarios + "Nome do funcionario: " + str(dado["nome"]) + '\n'
-        str_todas_funcionarios = str_todas_funcionarios + "ID do funcionario: " + str(dado["id"]) + '\n'
-        str_todas_funcionarios = str_todas_funcionarios + "Cargo do funcionario: " + str(dado["cargo"]) + '\n'
-        str_todas_funcionarios = str_todas_funcionarios + "Email do funcionario: " + str(dado["email"]) + '\n\n'
-       
-        
+        str_todos_funcionarios = str_todos_funcionarios + "Nome do funcionario: " + str(dado["nome"]) + '\n'
+        str_todos_funcionarios = str_todos_funcionarios + "ID do funcionario: " + str(dado["id"]) + '\n'
+        str_todos_funcionarios = str_todos_funcionarios + "Cargo do funcionario: " + str(dado["cargo"]) + '\n'
+        str_todos_funcionarios = str_todos_funcionarios + "Email do funcionario: " + str(dado["email"]) + '\n\n'       
     
 
-      sg.Popup('-------- LISTA DE funcionarios ----------', str_todas_funcionarios)
+      #sg.Popup('-------- LISTA DE funcionarios ----------', str_todos_funcionarios)
+      col1=[[sg.Text(str_todos_funcionarios)]]
+      col2=[[sg.Text("DIGITE O CODIGO DE UM FUNCIONARIO")],[sg.InputText('', key='codigo'), sg.Button('Incluir'),sg.Button('Feito')]]
+      if visibility == False:  
+        
+        layout = [     
+          [sg.Text("LISTA DE FUNCIONARIOS")],      
+                
+          [sg.Column(col1,size=(500,500),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+          
+          #[sg.Column(col2,size=(400,40),scrollable=False,vertical_alignment='bottom',visible=False)],              
+        
+        ]
+      else:
+        layout = [     
+          [sg.Text("LISTA DE FUNCIONARIOS")],      
+                
+          [sg.Column(col1,size=(500,380),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+          
+          [sg.Column(col2,size=(500,150),scrollable=False,vertical_alignment='bottom',visible=True)],              
+        
+        ]
+      self.__window = sg.Window('Lista funcionario',size=(510,530)).Layout(layout)
+      button,values = self.open()
+      if button in (None,"Incluir"):
+        x = values["codigo"]
+        sg.Popup("Funcionario incluido!")
+        self.close()       
+        return x
+      if button in (None,"Feito"):
+        self.close()
+        return 0
     
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
     ''' 

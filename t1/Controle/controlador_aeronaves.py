@@ -71,7 +71,9 @@ class ControladorAeronaves():
                                              })
           
           #self.__tela_aeronave.mostra_aeronave(dados_aeronave)
-        self.__tela_aeronave.mostra_aeronave(dados_aeronave,False)  
+          self.__tela_aeronave.mostra_aeronave(dados_aeronave,False)
+       
+          return 
           # self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo,
           #                                       "distancia_maxima":aeronave.distancia_maxima,
           #                                     "status":aeronave.status
