@@ -3,6 +3,10 @@ from Entidade.funcionario import Funcionario
 from Entidade.cargo import Cargo
 from DAOs.cargo_dao import CargoDAO
 from DAOs.funcionario_dao import FuncionarioDAO
+
+
+
+
 class ControladorFuncionarios:
     def __init__(self, controlador_sistema):
         #self.__funcionarios = []

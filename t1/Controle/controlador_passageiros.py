@@ -1,6 +1,7 @@
 from Limite.tela_passageiro import TelaPassageiro
 from Entidade.passageiro import Passageiro
 from DAOs.passageiro_dao import PassageiroDAO
+from Exception.objetoDuplicadoException import ObjetoDuplicadoException
 
 
 class ControladorPassageiros:
@@ -45,9 +46,12 @@ class ControladorPassageiros:
                 self.__passageiro_DAO.add(passageiro)
                 self.lista_passageiros()
             else:
-                raise KeyError
-        except KeyError:
-            self.__tela_passageiro.mostra_mensagem("Passageiro já existente!")
+                #raise KeyError
+                raise ObjetoDuplicadoException()
+        except ObjetoDuplicadoException as e:
+            self.__tela_passageiro.mostra_mensagem(e)
+        #except KeyError:
+            #self.__tela_passageiro.mostra_mensagem("Passageiro já existente!")
 
     
     def remove_passageiro(self):
