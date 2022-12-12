@@ -119,10 +119,10 @@ class ControladorVoos:
 
       x = self.__controlador_sistema.controlador_passageiros.lista_passageiros2()      
       if x != 0:
-        passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(x)     
+        passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(x)           
         voo.passageiros_voo.append(passageiro)
         passageiro.historico_de_voos.append(voo)
-      else:      
+      else:          
         return 0 
 
   def incluir_tripulante(self,voo):
