@@ -52,6 +52,7 @@ class ControladorPassageiros:
             self.__tela_passageiro.mostra_mensagem(e)
         #except KeyError:
             #self.__tela_passageiro.mostra_mensagem("Passageiro já existente!")
+            #commit
 
     
     def remove_passageiro(self):
