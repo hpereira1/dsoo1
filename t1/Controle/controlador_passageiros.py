@@ -2,6 +2,7 @@ from Limite.tela_passageiro import TelaPassageiro
 from Entidade.passageiro import Passageiro
 from DAOs.passageiro_dao import PassageiroDAO
 from Exception.objetoDuplicadoException import ObjetoDuplicadoException
+from Exception.objetoNaoExisteException import ObjetoNaoExisteException
 
 
 class ControladorPassageiros:
@@ -64,9 +65,12 @@ class ControladorPassageiros:
                 self.__passageiro_DAO.remove(passageiro.id)
                 self.lista_passageiros()
             else:
-                raise Exception
-        except Exception:
-            self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
+                raise ObjetoNaoExisteException()
+        except ObjetoNaoExisteException as e:
+            self.__tela_passageiro.mostra_mensagem(e)
+        #         raise Exception
+        # except Exception:
+        #     self.__tela_passageiro.mostra_mensagem("passageiro nao existe")
     
     def altera_passageiro(self):
         self.lista_passageiros()
