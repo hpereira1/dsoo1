@@ -32,11 +32,16 @@ class ControladorVoos:
                               )
           self.__voos.append(voo)
           while True:
-            self.incluir_passageiro(voo) 
-                  
-            aux = input(self.tela_voo.mostra_mensagem("incluir mais passageiros? "))
-            if aux in "NAOnao":
+            y = self.incluir_passageiro(voo)
+            if y == 0:
               break
+            else:
+              continue
+             
+                  
+            # aux = input(self.tela_voo.mostra_mensagem("incluir mais passageiros? "))
+            # if aux in "NAOnao":
+            #   break
           while True:
             self.incluir_tripulante(voo)
             aux1 = input(self.tela_voo.mostra_mensagem("incluir mais funcionario? "))
@@ -92,6 +97,7 @@ class ControladorVoos:
             #   #if isinstance(passageiro,Passageiro):
             #     string1 = string1 + str(passageiro) + "\n"
             #     self.__tela_voo.mostra_mensagem(string1)
+          
             
             
                         
@@ -102,11 +108,15 @@ class ControladorVoos:
 
   def incluir_passageiro(self,voo):
       #self.tela_voo.mostra_mensagem(self.controlador_sistema.controlador_passageiros.passageiros)
-      self.__controlador_sistema.controlador_passageiros.lista_passageiros()       
-       
-      passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.tela_voo.entrada("Digite o id de um passageiro"))
-      voo.passageiros_voo.append(passageiro)
-      passageiro.historico_de_voos.append(voo)
+      #self.__controlador_sistema.controlador_passageiros.lista_passageiros()
+      x = self.__controlador_sistema.controlador_passageiros.lista_passageiros2()      
+      if x != 0:
+        passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(x)     
+        #passageiro = self.__controlador_sistema.controlador_passageiros.pega_passageiro_por_id(self.tela_voo.entrada("Digite o id de um passageiro"))
+        voo.passageiros_voo.append(passageiro)
+        passageiro.historico_de_voos.append(voo)
+      else:      
+        return 0 
 
   def incluir_tripulante(self,voo):
       #self.tela_voo.mostra_mensagem(self.controlador_sistema.controlador_passageiros.passageiros)

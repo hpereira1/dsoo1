@@ -77,7 +77,7 @@ class ControladorAeronaves():
           #                                     "status":aeronave.status
           #                                     })         
     except Exception:
-      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA!!\n")   
+      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE SELECIONADA!!\n")   
       
   def seleciona_aeronave(self,distancia:str,codigo:str,id_voo:str):
     dados_aeronave =[]
@@ -101,7 +101,7 @@ class ControladorAeronaves():
             #                                     "status":aeronave.status})        
         self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo,aeronave_codigo)             
     except Exception:
-      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE ENCONTRADA\n")
+      self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE SELECIONADA\n")
   
   # def lista_historico(self):
   #   aeronave2 = self.__controlador_sistema.controlador_aeronaves.pega_aeronave_por_codigo(self.__tela_aeronave.entrada("\nDIGITE O CODIGO DE UM AVIAO\n"))

@@ -112,9 +112,9 @@ class TelaAeronave(TelaAbstrata):
       layout = [     
         [sg.Text("LISTA DE AERONAVES")],      
               
-        [sg.Column(col1,size=(400,380),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+        [sg.Column(col1,size=(400,500),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
         
-        [sg.Column(col2,size=(400,40),scrollable=False,vertical_alignment='bottom',visible=False)],              
+        #[sg.Column(col2,size=(400,40),scrollable=False,vertical_alignment='bottom',visible=False)],              
       
       ]
     else:
@@ -127,11 +127,14 @@ class TelaAeronave(TelaAbstrata):
       
       ]
     self.__window = sg.Window('Lista aeronave',size=(400,530)).Layout(layout)
-    button,values = self.open()
+    event, button,values = self.open()
     if button in (None,"Ok"):
       x = values["codigo"]
       self.close()
-    return x
+      return x
+    
+          
+    
       
     
    

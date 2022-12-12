@@ -14,6 +14,10 @@ class ControladorPassageiros:
     def passageiros(self):
         return self.__passageiros
     
+    @property
+    def tela_passageiro(self):
+        return self.__tela_passageiro
+    
     
     
         
@@ -76,15 +80,35 @@ class ControladorPassageiros:
         except Exception:
             self.__tela_passageiro.mostra_mensagem("Passageiro não existe")
     
+    
     def lista_passageiros(self):
+        dados_passageiro = []
         try:
             if not self.__passageiro_DAO.get_all():
                 raise Exception
             else:        
                 for passageiro in self.__passageiro_DAO.get_all():
-                    self.__tela_passageiro.mostra_mensagem({"nome": passageiro.nome, "id": passageiro.id})
+                    dados_passageiro.append({"nome": passageiro.nome, "id": passageiro.id,"email": passageiro.email})
+                    #self.__tela_passageiro.mostra_mensagem({"nome": passageiro.nome, "id": passageiro.id})
+                self.__tela_passageiro.mostra_passageiro(dados_passageiro,False)
         except Exception:
-            self.__tela_passageiro.mostra_mensagem("\nNENHUM PASSAGEIRO ENCONTRADO!\n")             
+            self.__tela_passageiro.mostra_mensagem("\nNENHUM PASSAGEIRO SELECIONADO!\n")
+    
+    def lista_passageiros2(self):
+        dados_passageiro = []             
+        for passageiro in self.__passageiro_DAO.get_all():
+            dados_passageiro.append({"nome": passageiro.nome, "id": passageiro.id,"email": passageiro.email})
+            #self.__tela_passageiro.mostra_mensagem({"nome": passageiro.nome, "id": passageiro.id})
+        x = self.__tela_passageiro.mostra_passageiro(dados_passageiro,True)
+        return x
+        
+            
+    def seleciona_passageiro(self,id):
+        dados_passageiro = []
+        for passageiro in self.__passageiro_DAO.get_all():
+            if passageiro.id == id:
+                    dados_passageiro.append({"nome": passageiro.nome, "id": passageiro.id,"email": passageiro.email})
+        self.__tela_passageiro.mostra_passageiro(dados_passageiro,True)             
             
     def ver_historico_por_id(self):
         self.lista_passageiros()

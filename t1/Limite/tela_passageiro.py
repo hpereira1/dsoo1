@@ -91,17 +91,48 @@ class TelaPassageiro(TelaAbstrata):
       print("EMAIL DO passageiro: ", dados_passageiro["email"])
       print("\n")
     '''
-    def mostra_passageiro(self, dados_passageiro):
-      str_todas_passageiros = ""
+    def mostra_passageiro(self, dados_passageiro,visibility=False):
+      str_todos_passageiros = ""
       for dado in dados_passageiro:
-        str_todas_passageiros = str_todas_passageiros + "Nome do passageiro: " + str(dado["nome"]) + '\n'
-        str_todas_passageiros = str_todas_passageiros + "ID do passageiro: " + str(dado["id"]) + '\n'
-        str_todas_passageiros = str_todas_passageiros + "Email do passageiro: " + str(dado["email"]) + '\n\n'
+        str_todos_passageiros = str_todos_passageiros + "Nome do passageiro: " + str(dado["nome"]) + '\n'
+        str_todos_passageiros = str_todos_passageiros + "ID do passageiro: " + str(dado["id"]) + '\n'
+        str_todos_passageiros = str_todos_passageiros + "Email do passageiro: " + str(dado["email"]) + '\n\n'
        
         
     
 
-      #sg.Popup('-------- LISTA DE Passageiros ----------', str_todas_passageiros)
+      #sg.Popup('-------- LISTA DE Passageiros ----------', str_todos_passageiros)
+      col1=[[sg.Text(str_todos_passageiros)]]
+      col2=[[sg.Text("DIGITE O CODIGO DE UM PASSAGEIRO")],[sg.InputText('', key='codigo'), sg.Button('Incluir'),sg.Button('Feito')]]
+      if visibility == False:  
+        
+        layout = [     
+          [sg.Text("LISTA DE PASSAGEIROS")],      
+                
+          [sg.Column(col1,size=(500,500),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+          
+          #[sg.Column(col2,size=(400,40),scrollable=False,vertical_alignment='bottom',visible=False)],              
+        
+        ]
+      else:
+        layout = [     
+          [sg.Text("LISTA DE PASSAGEIROS")],      
+                
+          [sg.Column(col1,size=(500,380),scrollable=True,vertical_scroll_only=True,vertical_alignment='top')],
+          
+          [sg.Column(col2,size=(500,150),scrollable=False,vertical_alignment='bottom',visible=True)],              
+        
+        ]
+      self.__window = sg.Window('Lista passageiro',size=(510,530)).Layout(layout)
+      button,values = self.open()
+      if button in (None,"Incluir"):
+        x = values["codigo"]
+        sg.Popup("Passageiro incluido!")
+        self.close()       
+        return x
+      if button in (None,"Feito"):
+        self.close()
+        return 0
     
     
   # fazer aqui tratamento dos dados, caso a entrada seja diferente do esperado
