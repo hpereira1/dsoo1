@@ -11,7 +11,7 @@ class TelaAeronave(TelaAbstrata):
   
   def tela_opcoes(self):    
     self.init_opcoes()    
-    button, values = self.open()   
+    event, values = self.open()   
     if values['1']:
       opcao = 1
     if values['2']:
@@ -22,7 +22,7 @@ class TelaAeronave(TelaAbstrata):
       opcao = 4
     # cobre os casos de Retornar, fechar janela, ou clicar cancelar
     #Isso faz com que retornemos a tela do sistema caso qualquer uma dessas coisas aconteca
-    if values['0'] or button in (None, 'Cancelar'):
+    if values['0'] or event in (None, 'Cancelar'):
       opcao = 0
    
     self.close()
@@ -68,7 +68,7 @@ class TelaAeronave(TelaAbstrata):
     ]
     self.__window = sg.Window('Sistema aeronaves').Layout(layout)
 
-    button, values = self.open()
+    event, values = self.open()
     codigo = values['codigo']
     modelo = values['modelo']
     combustivel = values['combustivel']
@@ -127,14 +127,16 @@ class TelaAeronave(TelaAbstrata):
       
       ]
     self.__window = sg.Window('Lista aeronave',size=(400,530)).Layout(layout)
-    button,values = self.open()
-    if button in (None,"Ok"):
-      x = values["codigo"]
-      self.close()
-      return x
-    else:
-      return 0
+    while True:
     
+      event, values = self.open()
+      if event in (None,"Ok"):
+        x = values["codigo"]
+        self.close()
+        return x
+      if event == sg.WIN_CLOSED:
+        break
+      
           
     
       
@@ -166,8 +168,8 @@ class TelaAeronave(TelaAbstrata):
     self.__window.Close()
 
   def open(self):
-    button, values = self.__window.Read()
-    return button, values
+    event, values = self.__window.Read()
+    return event, values
   
   
   

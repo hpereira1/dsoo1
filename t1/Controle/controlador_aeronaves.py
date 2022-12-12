@@ -41,7 +41,7 @@ class ControladorAeronaves():
       aeronave.codigo = novos_dados_aeronave["codigo"]
       aeronave.modelo = novos_dados_aeronave["modelo"]
       aeronave.combustivel = novos_dados_aeronave["combustivel"]
-      aeronave.numero_max_passafeiros = novos_dados_aeronave["numero_max_passageiros"]
+      aeronave.numero_max_passageiros = novos_dados_aeronave["numero_max_passageiros"]
       aeronave.peso_max_decolagem = novos_dados_aeronave["peso_max_decolagem"]
       aeronave.distancia_maxima = novos_dados_aeronave["distancia_maxima"]
       aeronave.numero_min_tripulantes = novos_dados_aeronave["numero_min_tripulantes"]
@@ -100,7 +100,7 @@ class ControladorAeronaves():
             # self.__tela_aeronave.mostra_mensagem({"codigo": aeronave.codigo, "modelo":aeronave.modelo, 
             #                                     "distancia_maxima":aeronave.distancia_maxima,
             #                                     "status":aeronave.status})        
-        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo,aeronave_codigo)             
+        self.__controlador_sistema.controlador_planos_de_voo.inclui_aeronave_plano(codigo,id_voo,aeronave_codigo)                     
     except Exception:
       self.__tela_aeronave.mostra_mensagem("\nNENHUMA AERONAVE SELECIONADA\n")
   
